@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { devCredentials } from './credentials';
+import { environmentCommon } from './environment.common';
+
 export const environment = {
-  production: false
+  production: false,
+  ...devCredentials,
+  ...environmentCommon,
 };
 
 /*
