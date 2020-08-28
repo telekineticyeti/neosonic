@@ -9,7 +9,7 @@ import { AirsonicApiService } from './services/airsonic-api.service';
 export class AppComponent {
   title = 'airsonic-client';
   constructor(private airsonicApi: AirsonicApiService) {
-    console.log(this.airsonicApi.getPlaylists());
+    this.airsonicApi.getPlaylists();
   }
 
   /**
