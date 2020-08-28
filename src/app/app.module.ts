@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListPlaylistsComponent } from './components/list-playlists/list-playlists.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, ListPlaylistsComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })

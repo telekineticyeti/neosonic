@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #1e1e1e;
+  color: #e9e9e9;
+}
+.container {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+  & [class*="col"] {
+    padding: 10px;
+    flex: 1;
+  }
+}

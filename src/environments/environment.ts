@@ -7,7 +7,7 @@ import { environmentCommon } from './environment.common';
 
 export const environment = {
   production: false,
-  ...devCredentials,
+  ...(devCredentials as ICredentials),
   ...environmentCommon,
 };
 
@@ -19,3 +19,8 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+export interface ICredentials {
+  airsonic_server: string;
+  airsonic_username: string;
+  airsonic_password: string;
+}
