@@ -1,10 +1,10 @@
 import { Injectable, ErrorHandler } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
 import { parseString } from 'xml2js';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,7 @@ export class AirsonicApiService {
    */
   public getPlaylists() {
     const url = `${env.airsonic_server}/rest/getPlaylists${this.apiAuthStr()}`;
-    console.log(url);
-    this.callApiEndpoint(url).subscribe((data) => console.log(data));
+    return this.callApiEndpoint(url);
   }
 
   private callApiEndpoint(url: string) {
@@ -27,16 +26,14 @@ export class AirsonicApiService {
     };
     return this.http.get(url, httpOptions).pipe(
       map((res) => {
+        let parsedResult;
         parseString(res, { explicitArray: true }, (error, result) => {
-          if (error) {
-            // throw new Error(error);
-            console.log(error);
-          } else {
-            console.log(result);
-            return result;
+          if (!error) {
+            parsedResult = result;
           }
         });
-        // return res;
+
+        return parsedResult as airsonic.SubSonicApiResponse;
       }),
       catchError((error) => this.errorHandler(error))
     );
