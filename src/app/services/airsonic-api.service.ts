@@ -1,10 +1,10 @@
-import { Injectable, ErrorHandler } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment as env } from '../../environments/environment';
-import { Md5 } from 'ts-md5/dist/md5';
-import { parseString } from 'xml2js';
-import { map, catchError } from 'rxjs/operators';
-import { throwError, from } from 'rxjs';
+import {Injectable, ErrorHandler} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment as env} from '../../environments/environment';
+import {Md5} from 'ts-md5/dist/md5';
+import {parseString} from 'xml2js';
+import {map, catchError} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,22 +12,16 @@ import { throwError, from } from 'rxjs';
 export class AirsonicApiService {
   constructor(private http: HttpClient) {}
 
-  /**
-   * @returns XML list of playlists
-   */
-  public getPlaylists() {
-    const url = `${env.airsonic_server}/rest/getPlaylists${this.apiAuthStr()}`;
-    return this.callApiEndpoint(url);
-  }
+  public env = env;
 
-  private callApiEndpoint(url: string) {
+  public callApiEndpoint(url: string) {
     const httpOptions = {
       responseType: 'text' as 'text',
     };
     return this.http.get(url, httpOptions).pipe(
-      map((res) => {
+      map(res => {
         let parsedResult;
-        parseString(res, { explicitArray: true }, (error, result) => {
+        parseString(res, {explicitArray: true}, (error, result) => {
           if (!error) {
             parsedResult = result;
           }
@@ -35,11 +29,11 @@ export class AirsonicApiService {
 
         return parsedResult as airsonic.SubSonicApiResponse;
       }),
-      catchError((error) => this.errorHandler(error))
+      catchError(error => this.errorHandler(error)),
     );
   }
 
-  private errorHandler(error) {
+  public errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
@@ -53,7 +47,7 @@ export class AirsonicApiService {
   /**
    * @returns string of parameters required for API calls
    */
-  private apiAuthStr(): string {
+  public apiAuthStr(): string {
     const salt = this.createSaltStr(6);
     const hash = Md5.hashStr(env.airsonic_password + salt);
     return `?u=${env.airsonic_username}&t=${hash}&s=${salt}&c=${env.appName}&v=${env.airsonicApiVersion}`;
@@ -69,7 +63,7 @@ export class AirsonicApiService {
     const characterSetLength = characterSet.length;
     for (let i = 0; i < length; i++) {
       result += characterSet.charAt(
-        Math.floor(Math.random() * characterSetLength)
+        Math.floor(Math.random() * characterSetLength),
       );
     }
     return result;

@@ -1,11 +1,22 @@
-import { createAction, props } from '@ngrx/store';
+import {createAction, props} from '@ngrx/store';
 
-export const getPlaylists = createAction('[Playlists] getPlaylists()');
-export const getPlaylistsSuccess = createAction(
-  '[Playlists] getPlaylists() success',
-  props<{ playlists: airsonic.Playlist[] }>()
-);
-export const getPlaylistsFailure = createAction(
-  '[Playlists] getPlaylists() fail',
-  props<Error>()
-);
+enum actions {
+  GET = '[PLAYLISTS] Get Playlists',
+  GET_SUCCESS = '[PLAYLISTS] Get Playlists Success',
+  GET_FAIL = '[PLAYLISTS] Get Playlists Fail',
+  CREATE = '[PLAYLISTS] Get Playlists Fail',
+  CREATE_SUCCESS = '[PLAYLISTS] Get Playlists Fail',
+  CREATE_FAIL = '[PLAYLISTS] Get Playlists Fail',
+  DELETE = '[PLAYLISTS] Get Playlists Fail',
+  DELETE_SUCCESS = '[PLAYLISTS] Get Playlists Fail',
+  DELETE_FAIL = '[PLAYLISTS] Get Playlists Fail',
+}
+
+export const PlaylistActions = {
+  get: createAction(actions.GET),
+  getSuccess: createAction(
+    actions.GET_SUCCESS,
+    props<{playlists: airsonic.Playlist[]}>(),
+  ),
+  getFail: createAction(actions.GET_FAIL, props<Error>()),
+};

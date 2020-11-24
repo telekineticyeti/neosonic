@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PlaylistsFacade } from 'src/app/core-data/playlists/playlists.facade.service';
+import {Component, OnInit} from '@angular/core';
+import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
 
 @Component({
   selector: 'list-playlists',

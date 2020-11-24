@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { AirsonicApiService } from './services/airsonic-api.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,5 @@ import { AirsonicApiService } from './services/airsonic-api.service';
 })
 export class AppComponent {
   title = 'airsonic-client';
-  constructor(private airsonicApi: AirsonicApiService) {
-    this.airsonicApi.getPlaylists();
-  }
-
-  /**
-   * TODO:
-   * - Find an XML parser thing
-   * - Set up state management
-   */
+  constructor() {}
 }

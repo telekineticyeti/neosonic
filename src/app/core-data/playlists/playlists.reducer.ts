@@ -1,5 +1,5 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import { PlaylistActions } from '../actions';
+import {Action, createReducer, on} from '@ngrx/store';
+import {PlaylistActions} from './playlists.actions';
 
 const initialState: PlaylistsState = {
   playlists: [],
@@ -7,15 +7,15 @@ const initialState: PlaylistsState = {
 
 const playlistsReducer = createReducer(
   initialState,
-  on(PlaylistActions.getPlaylistsSuccess, (state, { playlists }) => ({
+  on(PlaylistActions.getSuccess, (state, {playlists}) => ({
     ...state,
     playlists,
-  }))
+  })),
 );
 
 export function PlaylistsReducer(
   state: PlaylistsState | undefined,
-  action: Action
+  action: Action,
 ) {
   return playlistsReducer(state, action);
 }
