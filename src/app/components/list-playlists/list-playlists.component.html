@@ -1,10 +1,12 @@
 <div class="container">
   <mat-list role="list">
-    <mat-list-item
-      *ngFor="let playlist of playlistsService.playlists$ | async"
-      role="listitem"
-    >
-      {{ playlist.name }} ({{ playlist.songCount }} tracks)
-    </mat-list-item>
+    <ng-container *ngFor="let key of playlistsFacade.keys$ | async">
+      <mat-list-item
+        role="listitem"
+        *ngFor="let playlist of [(playlistsFacade.playlistById$ | async)(key)]"
+      >
+        {{ playlist.name }} ({{ playlist.songCount }} tracks)
+      </mat-list-item>
+    </ng-container>
   </mat-list>
 </div>

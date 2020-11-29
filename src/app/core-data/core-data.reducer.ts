@@ -1,13 +1,15 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
 import {environment} from '../../environments/environment';
-import {PlaylistsState, PlaylistsReducer} from './playlists/playlists.reducer';
+import {IPlaylistsState, PlaylistsReducer} from './playlists/playlists.reducer';
 
 export interface State {
-  playlists: PlaylistsState;
+  playlists: IPlaylistsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   playlists: PlaylistsReducer,
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<State>[] = !environment.production
+  ? []
+  : [];

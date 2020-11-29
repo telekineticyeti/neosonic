@@ -1020,10 +1020,24 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.6.4"
 
+"@ngrx/data@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/data/-/data-10.0.1.tgz#1280f9735ba88d92d928bfaf1b25e8f4a6ffc01f"
+  integrity sha512-jpIQWwcyWh8ghzjiXS5048EX7Pz4rwm5VADVEDcgVmPFhS/IaatDsJzImJPP0vL2URgWoeoxWx+3fNLqecNp2w==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/effects@^10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-10.0.0.tgz#d58151b1d7f5731ea42de7ed239bbab3d5866542"
   integrity sha512-HHcQQ6mj1Cd0rQgnX5Wp3f7G8PKhh+Rk+jofsOsE6aHQPuuNhmnDwSA1U4PT4sXNv6JmFi5GjUqBz+tuw83oFQ==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/entity@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-10.0.1.tgz#2550a03c71d05a9691f1615eca80506411021cd0"
+  integrity sha512-Do9HfIR1qp+FQ2YK1vQlJ77J/D1A9mOYtD5xEwi66v/cyltpTS35Y3CaQwESyLXDK89+X41nSmPQfcYno1jhRw==
   dependencies:
     tslib "^2.0.0"
 

@@ -7,9 +7,9 @@ import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
   styleUrls: ['./list-playlists.component.scss'],
 })
 export class ListPlaylistsComponent implements OnInit {
-  constructor(public playlistsService: PlaylistsFacade) {}
+  constructor(public playlistsFacade: PlaylistsFacade) {}
 
   ngOnInit(): void {
-    this.playlistsService.getPlaylists();
+    this.playlistsFacade.getPlaylists();
   }
 }

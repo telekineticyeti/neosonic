@@ -1,9 +1,15 @@
 import {createSelector} from '@ngrx/store';
 import {State} from '../core-data.reducer';
-import {PlaylistsState} from './playlists.reducer';
+import {getSelectors} from './playlists.reducer';
 
 const selectPlaylists = (state: State) => state.playlists;
 
 export const PlaylistsSelectors = {
-  playlists: createSelector(selectPlaylists, (state: PlaylistsState) => state.playlists),
+  keys: createSelector(selectPlaylists, getSelectors.ids),
+  entities: createSelector(selectPlaylists, getSelectors.entities),
+  total: createSelector(selectPlaylists, getSelectors.total),
+  selectedId: createSelector(selectPlaylists, getSelectors.selectedId),
+  playlistById: createSelector(selectPlaylists, getSelectors => (id: string) =>
+    getSelectors.entities[id],
+  ),
 };
