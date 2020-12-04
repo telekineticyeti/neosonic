@@ -19,9 +19,17 @@ const initialState: IPlaylistsState = adapter.getInitialState({
 
 const playlistsReducer = createReducer(
   initialState,
-  on(PlaylistActions.getSuccess, (state, {playlists}) =>
+  on(PlaylistActions.getAllSuccess, (state, {playlists}) =>
     adapter.setAll(playlists, state),
   ),
+  on(PlaylistActions.getSuccess, (state, {playlist}) => {
+    return state;
+  }),
+
+  on(PlaylistActions.debug, (state, debug) => {
+    console.log(debug);
+    return state;
+  }),
 );
 
 export function PlaylistsReducer(

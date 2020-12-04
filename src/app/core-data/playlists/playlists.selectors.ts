@@ -9,6 +9,7 @@ export const PlaylistsSelectors = {
   entities: createSelector(selectPlaylists, getSelectors.entities),
   total: createSelector(selectPlaylists, getSelectors.total),
   selectedId: createSelector(selectPlaylists, getSelectors.selectedId),
+  selectAll: createSelector(selectPlaylists, getSelectors.all),
   playlistById: createSelector(selectPlaylists, getSelectors => (id: string) =>
     getSelectors.entities[id],
   ),

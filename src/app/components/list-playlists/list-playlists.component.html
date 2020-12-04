@@ -4,6 +4,7 @@
       <mat-list-item
         role="listitem"
         *ngFor="let playlist of [(playlistsFacade.playlistById$ | async)(key)]"
+        [routerLink]="playlist.id"
       >
         {{ playlist.name }} ({{ playlist.songCount }} tracks)
       </mat-list-item>

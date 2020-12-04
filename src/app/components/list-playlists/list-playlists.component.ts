@@ -10,6 +10,6 @@ export class ListPlaylistsComponent implements OnInit {
   constructor(public playlistsFacade: PlaylistsFacade) {}
 
   ngOnInit(): void {
-    this.playlistsFacade.getPlaylists();
+    this.playlistsFacade.getAllPlaylists();
   }
 }

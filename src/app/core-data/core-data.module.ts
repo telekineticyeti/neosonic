@@ -7,6 +7,7 @@ import {reducers, metaReducers} from './core-data.reducer';
 import {PlaylistsEffects} from './playlists/playlists.effects';
 import {PlaylistsFacade} from './playlists/playlists.facade';
 import {PlaylistsService} from './playlists/playlists.service';
+import {SongsFacade} from './songs/songs.facade';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import {PlaylistsService} from './playlists/playlists.service';
     EffectsModule.forRoot([PlaylistsEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [PlaylistsFacade, PlaylistsService],
+  providers: [PlaylistsFacade, PlaylistsService, SongsFacade],
 })
 export class CoreDataModule {}

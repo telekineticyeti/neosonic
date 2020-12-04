@@ -1,4 +1,4 @@
-import {Injectable, ErrorHandler} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment as env} from '../../environments/environment';
 import {Md5} from 'ts-md5/dist/md5';
@@ -12,12 +12,17 @@ import {throwError} from 'rxjs';
 export class AirsonicApiService {
   constructor(private http: HttpClient) {}
 
+  get apiServer(): string {
+    return this.env.airsonic_server;
+  }
+
   public env = env;
 
   public callApiEndpoint(url: string) {
     const httpOptions = {
       responseType: 'text' as 'text',
     };
+
     return this.http.get(url, httpOptions).pipe(
       map(res => {
         let parsedResult;
@@ -27,7 +32,7 @@ export class AirsonicApiService {
           }
         });
 
-        return parsedResult as airsonic.SubSonicApiResponse;
+        return parsedResult as SubSonicApi.Response;
       }),
       catchError(error => this.errorHandler(error)),
     );

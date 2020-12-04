@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Store} from '@ngrx/store';
 import {AirsonicApiService} from 'src/app/services/airsonic-api.service';
-import {State} from '../core-data.reducer';
 
 @Injectable()
 export class PlaylistsService {
@@ -16,4 +14,24 @@ export class PlaylistsService {
     }/rest/getPlaylists${this.airSonicApi.apiAuthStr()}`;
     return this.airSonicApi.callApiEndpoint(url);
   }
+
+  /**
+   * Return single playlist
+   * @param id ID of playlist
+   */
+  public getPlaylist(id: string) {
+    const url = `${
+      this.airSonicApi.apiServer
+    }/rest/getPlaylist${this.airSonicApi.apiAuthStr()}&id=${id}`;
+    return this.airSonicApi.callApiEndpoint(url);
+  }
+
+  public isTruthy(val: string) {
+    return val === 'true';
+  }
+
+  // TODO
+  // public formatPlaylist(playlist: SubSonicApi.Playlist): airsonic.Playlist {
+
+  // }
 }
