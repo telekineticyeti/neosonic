@@ -28,7 +28,13 @@ export class PlaylistsEffects {
 
             return PlaylistActions.getAllSuccess({playlists});
           }),
-          catchError((error: Error) => of(PlaylistActions.getAllFail(error))),
+          catchError((error: Error) => [
+            PlaylistActions.getAllFail(error),
+            PlaylistActions.debug({
+              debug: 'PlaylistActions.getFail',
+              error: error,
+            }),
+          ]),
         ),
       ),
     ),
@@ -44,7 +50,7 @@ export class PlaylistsEffects {
 
             const playlist: airsonic.PlaylistDetails = {
               playlist: payload.$,
-              songs: payload.entry.map(s => s.$),
+              songs: payload.entry ? payload.entry.map(s => s.$) : [],
             };
 
             return playlist;
@@ -53,7 +59,13 @@ export class PlaylistsEffects {
             PlaylistActions.getSuccess({playlist}),
             SongActions.getSuccess({songs: playlist.songs}),
           ]),
-          catchError((error: Error) => of(PlaylistActions.getAllFail(error))),
+          catchError((error: Error) => [
+            PlaylistActions.getFail(error),
+            PlaylistActions.debug({
+              debug: 'PlaylistActions.getFail',
+              error: error,
+            }),
+          ]),
         ),
       ),
     ),

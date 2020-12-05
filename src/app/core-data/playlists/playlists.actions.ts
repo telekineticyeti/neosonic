@@ -35,5 +35,5 @@ export const PlaylistActions = {
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
 
-  debug: createAction('debug', props<any>()),
+  debug: createAction('debug', props<{debug: string; error?: Error}>()),
 };

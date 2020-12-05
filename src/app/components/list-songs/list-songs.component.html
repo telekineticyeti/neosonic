@@ -1,5 +1,8 @@
 <div class="container">
   <mat-list role="list">
+    <mat-list-item role="listitem" *ngIf="empty">
+      Nothing here yet...
+    </mat-list-item>
     <mat-list-item role="listitem" *ngFor="let song of songs">
       {{ song.artist }} - {{ song.title }}
     </mat-list-item>

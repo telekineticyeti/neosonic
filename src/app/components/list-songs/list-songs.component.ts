@@ -9,5 +9,9 @@ export class ListSongsComponent implements OnInit {
   @Input() songs: airsonic.Song[];
   constructor() {}
 
+  get empty(): boolean {
+    return !this.songs.length;
+  }
+
   public ngOnInit(): void {}
 }
