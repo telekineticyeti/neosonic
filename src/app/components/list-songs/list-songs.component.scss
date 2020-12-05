@@ -3,16 +3,27 @@
 .list-songs {
   mat-list-item {
     @extend %font-open-sans;
+    @extend %disable-selection;
     height: 36px;
     font-size: 13px;
     border-bottom: 1px solid rgba(white, 0.05);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: rgba(white, 0.025);
+      .playcount {
+        transition: 350ms;
+        opacity: 0.25;
+      }
+    }
   }
 }
 
 .song-content {
   flex: 1;
   display: grid;
-  grid-template-columns: 20px 300px 200px auto;
+  grid-template-columns: 20px 250px 175px auto 20px;
   grid-column-gap: 10px;
 }
 
@@ -29,10 +40,14 @@
   }
 }
 
-.artist {
-  // outline: 1px solid rgb(195, 245, 14);
+.artist,
+.title,
+.album {
+  @extend %truncate-ellipsis;
+  @extend %disable-selection;
 }
 
-.title {
-  // outline: 1px solid rgb(228, 68, 220);
+.playcount {
+  // opacity: 0.25;
+  opacity: 0;
 }

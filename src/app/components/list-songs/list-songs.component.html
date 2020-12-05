@@ -8,10 +8,40 @@
         <mat-icon
           class="favourite"
           [svgIcon]="song.starred ? 'heart_full' : 'heart_empty'"
+          [matTooltip]="
+            song.starred ? 'Favourited on ...' : 'Add to favourites'
+          "
+          [matTooltipShowDelay]="1000"
+          matTooltipPosition="above"
+          (click)="toggleFavourite(song.id)"
         ></mat-icon>
-        <div class="title">{{ song.title }}</div>
-        <div class="artist">{{ song.artist }}</div>
-        <div class="album">{{ song.album }}</div>
+        <div
+          class="title"
+          [matTooltip]="song.title"
+          [matTooltipShowDelay]="1000"
+          matTooltipPosition="above"
+        >
+          {{ song.title }}
+        </div>
+        <div
+          class="artist"
+          [matTooltip]="song.artist"
+          [matTooltipShowDelay]="1000"
+          matTooltipPosition="above"
+        >
+          {{ song.artist }}
+        </div>
+        <div
+          class="album"
+          [matTooltip]="song.album"
+          [matTooltipShowDelay]="1000"
+          matTooltipPosition="above"
+        >
+          {{ song.album }}
+        </div>
+        <div class="playcount">
+          {{ song.playCount }}
+        </div>
       </div>
     </mat-list-item>
   </mat-list>

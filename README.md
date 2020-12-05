@@ -7,3 +7,5 @@
 - [ ] Search
 - [ ] Playlist Creation/Editing
 - [ ] CDK Drag & Drop
+- [ ] Multiselect Songs
+- [ ] Create Playlist Button

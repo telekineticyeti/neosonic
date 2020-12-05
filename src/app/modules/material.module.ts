@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const materialModules = [
   MatCardModule,
@@ -21,6 +22,7 @@ const materialModules = [
   MatListModule,
   MatIconModule,
   MatMenuModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

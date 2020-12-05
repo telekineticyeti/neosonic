@@ -19,5 +19,9 @@ export class ListSongsComponent implements OnInit {
   //   return val === 'true';
   // }
 
+  public toggleFavourite(id: string): void {
+    console.log(id);
+  }
+
   public ngOnInit(): void {}
 }
