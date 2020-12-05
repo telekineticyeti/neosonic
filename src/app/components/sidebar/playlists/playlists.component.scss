@@ -1,0 +1,7 @@
+@import '~src/styles/variables';
+
+.sidebar-playlists {
+  mat-list-item {
+    @extend %mat-list-item;
+  }
+}

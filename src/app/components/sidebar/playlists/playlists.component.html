@@ -1,0 +1,11 @@
+<div class="sidebar-playlists">
+  <mat-list>
+    <mat-list-item
+      role="listitem"
+      *ngFor="let playlist of playlists"
+      (click)="openPlaylist(playlist.id)"
+    >
+      {{ playlist.name }}
+    </mat-list-item>
+  </mat-list>
+</div>

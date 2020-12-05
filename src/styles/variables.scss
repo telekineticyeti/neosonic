@@ -1,0 +1,21 @@
+$bada55: #bada55;
+
+%mat-list-item {
+  font-family: open-sans, sans-serif;
+  font-size: 14px;
+  height: 32px;
+  color: #ccc;
+  transition: 350ms;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+
+  ::ng-deep {
+    .mat-list-item-content {
+      padding: 0;
+    }
+  }
+}
