@@ -1,0 +1,7 @@
+@import '~src/styles/variables';
+
+.list-playlist {
+  mat-list-item {
+    @extend %mat-list-item;
+  }
+}

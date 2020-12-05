@@ -10,6 +10,8 @@ import {AppComponent} from './app.component';
 import {ListPlaylistsComponent} from './components/list-playlists/list-playlists.component';
 import {ListSongsComponent} from './components/list-songs/list-songs.component';
 import {PlaylistViewComponent} from './components/playlist-view/playlist-view.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PlaylistsComponent } from './components/sidebar/playlists/playlists.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import {PlaylistViewComponent} from './components/playlist-view/playlist-view.co
     ListPlaylistsComponent,
     ListSongsComponent,
     PlaylistViewComponent,
+    SidebarComponent,
+    PlaylistsComponent,
   ],
   imports: [
     BrowserModule,

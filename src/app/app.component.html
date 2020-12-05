@@ -2,16 +2,8 @@
   <div>
     <h1>Airsonic Client</h1>
   </div>
-  <!-- <button mat-icon-button [mat-menu-trigger-for]="menu" class="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <button mat-icon-button (click)="navigateGithub()">
-    <mat-icon
-      svgIcon="github"
-      aria-hidden="false"
-      aria-label="Github"
-    ></mat-icon>
-  </button> -->
 </mat-toolbar>
-
-<router-outlet></router-outlet>
+<div class="content">
+  <sidebar></sidebar>
+  <router-outlet class="outlet"></router-outlet>
+</div>

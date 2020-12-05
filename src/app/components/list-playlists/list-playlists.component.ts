@@ -9,7 +9,5 @@ import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
 export class ListPlaylistsComponent implements OnInit {
   constructor(public playlistsFacade: PlaylistsFacade) {}
 
-  ngOnInit(): void {
-    this.playlistsFacade.getAllPlaylists();
-  }
+  ngOnInit(): void {}
 }

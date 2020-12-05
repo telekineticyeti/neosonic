@@ -1,6 +1,6 @@
 {
   "name": "airsonic-client",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -24,6 +24,7 @@
     "@ngrx/data": "^10.0.1",
     "@ngrx/effects": "^10.0.0",
     "@ngrx/entity": "^10.0.1",
+    "@ngrx/router-store": "^10.1.0",
     "@ngrx/schematics": "^10.0.0",
     "@ngrx/store": "^10.0.0",
     "@ngrx/store-devtools": "^10.0.0",

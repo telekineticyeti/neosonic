@@ -1,4 +1,4 @@
-<div class="container">
+<div class="list-playlist">
   <mat-list role="list">
     <ng-container *ngFor="let key of playlistsFacade.keys$ | async">
       <mat-list-item
@@ -6,7 +6,8 @@
         *ngFor="let playlist of [(playlistsFacade.playlistById$ | async)(key)]"
         [routerLink]="playlist.id"
       >
-        {{ playlist.name }} ({{ playlist.songCount }} tracks)
+        {{ playlist.name }}
+        <!-- ({{ playlist.songCount }} tracks) -->
       </mat-list-item>
     </ng-container>
   </mat-list>
