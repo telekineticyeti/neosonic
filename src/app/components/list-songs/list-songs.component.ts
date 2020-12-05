@@ -13,5 +13,11 @@ export class ListSongsComponent implements OnInit {
     return !this.songs.length;
   }
 
+  // TODO: temporary measure until proper effect formatting is in place.
+  // public isFavourite(val: string): boolean {
+  //   console.log(val);
+  //   return val === 'true';
+  // }
+
   public ngOnInit(): void {}
 }

@@ -1,19 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 const materialModules = [
-  BrowserAnimationsModule,
   MatCardModule,
   MatDividerModule,
   MatToolbarModule,
@@ -26,7 +24,26 @@ const materialModules = [
 ];
 
 @NgModule({
-  imports: [...materialModules, CommonModule],
+  imports: [...materialModules],
   exports: materialModules,
 })
-export class MaterialModule {}
+export class MaterialModule {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'heart_empty',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/heart-empty.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'heart_full',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/heart-full.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'playlist',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/playlist.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'headphones',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/headphones.svg'),
+    );
+  }
+}

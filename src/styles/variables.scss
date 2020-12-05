@@ -1,7 +1,7 @@
 $bada55: #bada55;
 
 %mat-list-item {
-  font-family: open-sans, sans-serif;
+  @extend %font-open-sans;
   font-size: 14px;
   height: 32px;
   color: #ccc;
@@ -18,4 +18,19 @@ $bada55: #bada55;
       padding: 0;
     }
   }
+}
+
+%font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+%font-roboto {
+  font-family: Roboto, 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+%font-mont {
+  font-family: Montserrat, 'Open Sans', sans-serif;
+  font-weight: 400;
 }

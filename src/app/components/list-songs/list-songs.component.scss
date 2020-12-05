@@ -1,0 +1,38 @@
+@import '~src/styles/variables';
+
+.list-songs {
+  mat-list-item {
+    @extend %font-open-sans;
+    height: 36px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(white, 0.05);
+  }
+}
+
+.song-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 20px 300px 200px auto;
+  grid-column-gap: 10px;
+}
+
+.favourite {
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 150ms;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.artist {
+  // outline: 1px solid rgb(195, 245, 14);
+}
+
+.title {
+  // outline: 1px solid rgb(228, 68, 220);
+}
