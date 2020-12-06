@@ -12,6 +12,7 @@ import {SongsFacade} from './songs/songs.facade';
 import {RouterFacade} from './router/router.facade';
 import {RouterSerializer} from './router/router.serializer.class';
 import {routerInitialState} from './router/router.reducer';
+import {SongEffects} from './songs/songs.effects';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import {routerInitialState} from './router/router.reducer';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([PlaylistsEffects]),
+    EffectsModule.forRoot([PlaylistsEffects, SongEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [

@@ -1,1 +1,4 @@
-<list-songs [songs]="songsFacade.all$ | async"></list-songs>
+<list-songs
+  [songs]="songsFacade.all$ | async"
+  (songClick)="songClick($event)"
+></list-songs>

@@ -17,6 +17,10 @@
         opacity: 0.25;
       }
     }
+
+    &.selected {
+      background: rgba($primary, 0.5);
+    }
   }
 }
 

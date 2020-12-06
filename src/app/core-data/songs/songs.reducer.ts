@@ -20,6 +20,12 @@ const reducer = createReducer(
   initialState,
   on(SongActions.getSuccess, (state, {songs}) => adapter.setAll(songs, state)),
   on(SongActions.deleteAll, state => adapter.removeAll(state)),
+  on(SongActions.updateOne, (state, {update}) =>
+    adapter.updateOne(update, state),
+  ),
+  on(SongActions.updateMany, (state, {updates}) =>
+    adapter.updateMany(updates, state),
+  ),
 );
 
 export function SongsReducer(state: ISongsState | undefined, action: Action) {

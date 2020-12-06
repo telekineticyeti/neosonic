@@ -1,11 +1,11 @@
 # TODO
 
 - [x] Router state + serializer
-- [x] Material Icon
+- [x] Material Icons
+- [x] CDK Drag & Drop
+- [x] Multiselect Songs
 - [ ] Context menus for playlist/songs
 - [ ] Album/artist browser
 - [ ] Search
 - [ ] Playlist Creation/Editing
-- [ ] CDK Drag & Drop
-- [ ] Multiselect Songs
 - [ ] Create Playlist Button

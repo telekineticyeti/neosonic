@@ -10,10 +10,14 @@ export class SongsFacade {
 
   public allSongs$ = this.store.select(SongSelectors.entities);
   public keys$ = this.store.select(SongSelectors.keys);
-  public songById$ = this.store.select(SongSelectors.SongById);
+  public songById$ = this.store.select(SongSelectors.songById);
   public all$ = this.store.select(SongSelectors.selectAll);
 
   public emptySongs(): void {
     this.store.dispatch(SongActions.deleteAll());
+  }
+
+  public click(eventPayload: airsonicEvents.SongClick) {
+    this.store.dispatch(SongActions.clicked({click: eventPayload}));
   }
 }

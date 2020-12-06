@@ -61,6 +61,8 @@ declare namespace airsonic {
     transcodedSuffix?: string;
     type?: string;
     year?: string;
+    selected?: boolean;
+    previousClicked?: boolean;
   }
 }
 
@@ -136,4 +138,11 @@ declare namespace SubSonicApi {
   }
 
   export type StatusTypes = 'ok' | 'error';
+}
+
+declare namespace airsonicEvents {
+  export interface SongClick {
+    event: MouseEvent;
+    song: airsonic.Song;
+  }
 }

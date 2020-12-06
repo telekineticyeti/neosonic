@@ -29,8 +29,11 @@ export class PlaylistViewComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    console.log('fsd');
     this.songsFacade.emptySongs();
     this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  public songClick(e: airsonicEvents.SongClick): void {
+    this.songsFacade.click(e);
   }
 }

@@ -1,4 +1,4 @@
-<div class="list-songs">
+<div class="list-songs" *ngIf="songs">
   <mat-list
     role="list"
     cdkDropList
@@ -8,7 +8,13 @@
     <mat-list-item role="listitem" *ngIf="empty">
       Nothing here yet...
     </mat-list-item>
-    <mat-list-item role="listitem" *ngFor="let song of songs" cdkDrag>
+    <mat-list-item
+      role="listitem"
+      *ngFor="let song of songs"
+      [ngClass]="{selected: song.selected}"
+      (click)="click($event, song)"
+      cdkDrag
+    >
       <div class="song-content">
         <mat-icon
           class="favourite"
@@ -18,7 +24,7 @@
           "
           [matTooltipShowDelay]="1000"
           matTooltipPosition="above"
-          (click)="toggleFavourite(song.id)"
+          (click)="toggleFavourite($event, song)"
         ></mat-icon>
         <div
           class="title"

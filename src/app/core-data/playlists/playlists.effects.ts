@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {Observable, of} from 'rxjs';
-import {mergeMap, catchError, map, concatMap, switchMap} from 'rxjs/operators';
+import {Action} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
+
+import {SongActions} from '../songs/songs.actions';
 import {PlaylistActions} from './playlists.actions';
 import {PlaylistsService} from './playlists.service';
-import {SongActions} from '../songs/songs.actions';
 
 @Injectable()
 export class PlaylistsEffects {

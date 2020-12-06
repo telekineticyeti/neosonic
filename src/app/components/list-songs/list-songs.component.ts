@@ -1,27 +1,24 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'list-songs',
   templateUrl: './list-songs.component.html',
   styleUrls: ['./list-songs.component.scss'],
 })
-export class ListSongsComponent implements OnInit {
-  @Input() songs: airsonic.Song[];
-  constructor() {}
+export class ListSongsComponent {
+  @Input() public songs: airsonic.Song[];
+  @Output() public songClick = new EventEmitter<airsonicEvents.SongClick>();
+  @Output() public favClick = new EventEmitter<airsonicEvents.SongClick>();
 
   get empty(): boolean {
     return !this.songs.length;
   }
 
-  // TODO: temporary measure until proper effect formatting is in place.
-  // public isFavourite(val: string): boolean {
-  //   console.log(val);
-  //   return val === 'true';
-  // }
-
-  public toggleFavourite(id: string): void {
-    console.log(id);
+  public toggleFavourite(event: MouseEvent, song: airsonic.Song): void {
+    this.favClick.emit({event, song});
   }
 
-  public ngOnInit(): void {}
+  public click(event: MouseEvent, song: airsonic.Song): void {
+    this.songClick.emit({event, song});
+  }
 }

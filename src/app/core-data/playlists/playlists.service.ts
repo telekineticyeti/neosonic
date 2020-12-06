@@ -1,8 +1,6 @@
-import {HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AirsonicApiService} from 'src/app/services/airsonic-api.service';
-import {URLSearchParams} from 'url';
 
 @Injectable()
 export class PlaylistsService {
