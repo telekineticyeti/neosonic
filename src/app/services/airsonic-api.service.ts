@@ -58,6 +58,27 @@ export class AirsonicApiService {
     return `?u=${env.airsonic_username}&t=${hash}&s=${salt}&c=${env.appName}&v=${env.airsonicApiVersion}`;
   }
 
+  public constructEndpointUrl(
+    endpoint: string,
+    params: {
+      [key: string]: string;
+    }[],
+  ): URL {
+    const url = new URL(
+      `${this.apiServer}/rest/${endpoint}${this.apiAuthStr()}`,
+    );
+
+    // Object.entries(params).forEach(p => {
+    //   url.searchParams.append(p[0], p[1]);
+    // });
+
+    params.forEach(p =>
+      Object.entries(p).forEach(o => url.searchParams.append(o[0], o[1])),
+    );
+
+    return url;
+  }
+
   /**
    * @returns a randomised string of characters for use as a salt
    */

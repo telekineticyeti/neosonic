@@ -2,8 +2,11 @@
   <mat-list>
     <mat-list-item
       role="listitem"
+      [cdkDropListData]="playlists"
       *ngFor="let playlist of playlists"
       (click)="openPlaylist(playlist.id)"
+      cdkDropList
+      (cdkDropListDropped)="drop($event, playlist)"
     >
       {{ playlist.name }}
     </mat-list-item>

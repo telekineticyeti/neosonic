@@ -11,6 +11,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const materialModules = [
   MatCardModule,
@@ -23,6 +24,7 @@ const materialModules = [
   MatIconModule,
   MatMenuModule,
   MatTooltipModule,
+  DragDropModule,
 ];
 
 @NgModule({

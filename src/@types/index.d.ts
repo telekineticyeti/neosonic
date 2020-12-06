@@ -4,6 +4,15 @@ declare namespace airsonic {
     songs: Song[];
   }
 
+  export interface PlaylistUpdateRequest {
+    playlistId: string;
+    name?: string;
+    comment?: string;
+    public?: boolean;
+    songIdsToAdd?: string[];
+    songIndexesToRemove?: string[];
+  }
+
   export interface Playlist {
     changed: string; // TODO: Timestamp conversion
     comment: string;

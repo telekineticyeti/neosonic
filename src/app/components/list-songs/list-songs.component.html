@@ -1,9 +1,14 @@
 <div class="list-songs">
-  <mat-list role="list">
+  <mat-list
+    role="list"
+    cdkDropList
+    #songlist="cdkDropList"
+    [cdkDropListData]="songs"
+  >
     <mat-list-item role="listitem" *ngIf="empty">
       Nothing here yet...
     </mat-list-item>
-    <mat-list-item role="listitem" *ngFor="let song of songs">
+    <mat-list-item role="listitem" *ngFor="let song of songs" cdkDrag>
       <div class="song-content">
         <mat-icon
           class="favourite"

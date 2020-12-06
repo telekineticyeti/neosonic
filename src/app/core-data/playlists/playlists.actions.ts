@@ -16,6 +16,10 @@ enum actions {
   DELETE = '[PLAYLISTS] Get Playlists Fail',
   DELETE_SUCCESS = '[PLAYLISTS] Get Playlists Fail',
   DELETE_FAIL = '[PLAYLISTS] Get Playlists Fail',
+
+  UPDATE = '[PLAYLIST] Update ',
+  UPDATE_SUCCESS = '[PLAYLIST] Update Success',
+  UPDATE_FAIL = '[PLAYLIST] Update Fail',
 }
 
 export const PlaylistActions = {
@@ -34,6 +38,13 @@ export const PlaylistActions = {
     props<{playlist: airsonic.PlaylistDetails}>(),
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
+
+  update: createAction(
+    actions.UPDATE,
+    props<{payload: airsonic.PlaylistUpdateRequest}>(),
+  ),
+  updateSuccess: createAction(actions.UPDATE_SUCCESS),
+  updateFail: createAction(actions.UPDATE_FAIL, props<Error>()),
 
   debug: createAction('debug', props<{debug: string; error?: Error}>()),
 };

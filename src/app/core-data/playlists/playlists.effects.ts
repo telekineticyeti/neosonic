@@ -70,4 +70,29 @@ export class PlaylistsEffects {
       ),
     ),
   );
+
+  $update: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlaylistActions.update),
+      mergeMap(({payload}) =>
+        this.playlistService.updatePlaylist(payload).pipe(
+          map(res => {
+            if (res['subsonic-response'].$.status !== 'ok') {
+              return PlaylistActions.updateFail(
+                new Error('API Request Failed'),
+              );
+            }
+            return PlaylistActions.updateSuccess();
+          }),
+          catchError((error: Error) => [
+            PlaylistActions.updateFail(error),
+            PlaylistActions.debug({
+              debug: 'PlaylistActions.updateFail',
+              error: error,
+            }),
+          ]),
+        ),
+      ),
+    ),
+  );
 }

@@ -20,4 +20,8 @@ export class PlaylistsFacade {
   public getPlaylist(id: string): void {
     this.store.dispatch(PlaylistActions.get({id}));
   }
+
+  public updatePlaylist(payload: airsonic.PlaylistUpdateRequest): void {
+    this.store.dispatch(PlaylistActions.update({payload}));
+  }
 }

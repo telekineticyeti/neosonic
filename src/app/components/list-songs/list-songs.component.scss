@@ -48,6 +48,21 @@
 }
 
 .playcount {
-  // opacity: 0.25;
   opacity: 0;
+}
+
+.cdk-drag-preview {
+  opacity: 0.2;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+mat-list-item.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
