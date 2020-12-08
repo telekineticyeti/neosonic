@@ -41,7 +41,7 @@ export const PlaylistActions = {
 
   update: createAction(
     actions.UPDATE,
-    props<{payload: airsonic.PlaylistUpdateRequest}>(),
+    props<{payload: Partial<airsonic.PlaylistUpdateRequest>}>(),
   ),
   updateSuccess: createAction(actions.UPDATE_SUCCESS),
   updateFail: createAction(actions.UPDATE_FAIL, props<Error>()),

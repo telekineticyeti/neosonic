@@ -31,7 +31,7 @@ export class PlaylistsService {
 
   // http://www.subsonic.org/pages/api.jsp#updatePlaylist
   public updatePlaylist(
-    update: airsonic.PlaylistUpdateRequest,
+    update: Partial<airsonic.PlaylistUpdateRequest>,
   ): Observable<SubSonicApi.Response> {
     const params = [];
     update.playlistId && params.push({playlistId: update.playlistId});

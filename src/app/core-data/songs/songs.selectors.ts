@@ -1,25 +1,16 @@
-import {Dictionary} from '@ngrx/entity';
-import {createSelector} from '@ngrx/store';
-import {State} from '../core-data.reducer';
-import {getSelectors} from './songs.reducer';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import * as fromReducer from './songs.reducer';
 
-const selectSongs = (state: State) => state.songs;
+const selectSongState = createFeatureSelector<fromReducer.ISongsState>('songs');
 
-export const SongSelectors = {
-  keys: createSelector(selectSongs, getSelectors.ids),
-  entities: createSelector(selectSongs, getSelectors.entities),
-  total: createSelector(selectSongs, getSelectors.total),
-  selectedId: createSelector(selectSongs, getSelectors.selectedId),
-  selectAll: createSelector(selectSongs, getSelectors.all),
-  songById: createSelector(selectSongs, getSelectors => (id: string) =>
-    getSelectors.entities[id],
-  ),
-  // selectRange: createSelector(selectSongs, getSelectors.ids)
+const entities = createSelector(selectSongState, fromReducer.selectEntities);
+const ids = createSelector(selectSongState, fromReducer.selectIds);
+const all = createSelector(selectSongState, fromReducer.selectAll);
+const total = createSelector(selectSongState, fromReducer.selectTotal);
 
-  // selected: createSelector(selectSongs, getSelectors => () =>
-  //   getSelectors.entities
-  //   sadf: Dictionary<string>
-  //   .filter(e => e.selected)
-  // ),
-  // sle
-};
+const allSelected = createSelector(all, songs => songs.filter(s => s.selected));
+const byId = createSelector(selectSongState, getSelectors => (id: string) =>
+  getSelectors.entities[id],
+);
+
+export const SongSelectors = {entities, ids, all, total, allSelected, byId};

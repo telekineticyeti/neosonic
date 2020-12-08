@@ -32,17 +32,9 @@ export function SongsReducer(state: ISongsState | undefined, action: Action) {
   return reducer(state, action);
 }
 
-const {
+export const {
   selectIds,
   selectEntities,
   selectAll,
   selectTotal,
 } = adapter.getSelectors();
-
-export const getSelectors = {
-  ids: selectIds,
-  entities: selectEntities,
-  all: selectAll,
-  total: selectTotal,
-  selectedId: (state: ISongsState) => state.selectedId,
-};

@@ -15,7 +15,7 @@ export class SongEffects {
   songClick$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(SongActions.clicked),
-      withLatestFrom(this.store.select(SongSelectors.selectAll)),
+      withLatestFrom(this.store.select(SongSelectors.all)),
       mergeMap(([{click}, songs]) => {
         const clickedSong = click.song;
         const isShiftPressed = click.event.shiftKey;
