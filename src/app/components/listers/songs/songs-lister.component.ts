@@ -1,12 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {fromEvent} from 'rxjs';
 
 @Component({
-  selector: 'list-songs',
-  templateUrl: './list-songs.component.html',
-  styleUrls: ['./list-songs.component.scss'],
+  selector: 'songs-lister',
+  templateUrl: './songs-lister.component.html',
+  styleUrls: ['./songs-lister.component.scss'],
 })
-export class ListSongsComponent implements OnInit {
+export class SongsListerComponent implements OnInit {
   @Input() public songs: airsonic.Song[];
   @Output() public songClick = new EventEmitter<airsonicEvents.SongClick>();
   @Output() public favClick = new EventEmitter<airsonicEvents.SongClick>();

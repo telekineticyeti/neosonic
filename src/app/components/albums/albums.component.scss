@@ -1,0 +1,7 @@
+@import '~src/styles/variables';
+
+.list-albums {
+  mat-list-item {
+    @extend %mat-list-item;
+  }
+}

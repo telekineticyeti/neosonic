@@ -1,18 +1,21 @@
 import {NgModule} from '@angular/core';
-import {StoreModule} from '@ngrx/store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {RouterStateSerializer} from '@ngrx/router-store';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../../environments/environment';
-import {reducers, metaReducers} from './core-data.reducer';
+import {AlbumEffects} from './albums/albums.effects';
+import {AlbumsFacade} from './albums/albums.facade';
+import {AlbumsService} from './albums/albums.service';
+import {metaReducers, reducers} from './core-data.reducer';
 import {PlaylistsEffects} from './playlists/playlists.effects';
 import {PlaylistsFacade} from './playlists/playlists.facade';
 import {PlaylistsService} from './playlists/playlists.service';
-import {SongsFacade} from './songs/songs.facade';
 import {RouterFacade} from './router/router.facade';
-import {RouterSerializer} from './router/router.serializer.class';
 import {routerInitialState} from './router/router.reducer';
+import {RouterSerializer} from './router/router.serializer.class';
 import {SongEffects} from './songs/songs.effects';
+import {SongsFacade} from './songs/songs.facade';
 
 @NgModule({
   imports: [
@@ -24,13 +27,15 @@ import {SongEffects} from './songs/songs.effects';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([PlaylistsEffects, SongEffects]),
+    EffectsModule.forRoot([PlaylistsEffects, SongEffects, AlbumEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     PlaylistsService,
     PlaylistsFacade,
+    AlbumsService,
     SongsFacade,
+    AlbumsFacade,
     RouterFacade,
     {provide: RouterStateSerializer, useClass: RouterSerializer},
   ],

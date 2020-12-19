@@ -47,9 +47,4 @@ export class PlaylistsService {
 
     return this.airSonicApi.callApiEndpoint(url.href);
   }
-
-  // TODO
-  // public formatPlaylist(playlist: SubSonicApi.Playlist): airsonic.Playlist {
-
-  // }
 }

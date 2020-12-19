@@ -1,7 +1,9 @@
 @import '~src/styles/variables';
 
-.list-playlist {
+.sidebar-browse {
+  margin-bottom: 30px;
   mat-list-item {
     @extend %mat-list-item;
+    padding: 0 10px;
   }
 }

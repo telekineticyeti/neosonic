@@ -1,7 +1,69 @@
 declare namespace airsonic {
+  export interface AlbumListResult {
+    artist: string;
+    artistId: string;
+    coverArt: string;
+    created: string;
+    duration: string;
+    genre?: string;
+    id: string;
+    name: string;
+    songCount: string;
+  }
+
+  export interface Album {
+    id: string; // number
+    artist: string;
+    artistId: string;
+    coverArt: string;
+    created: string; // timestamp
+    duration: string;
+    genre?: string;
+    name: string;
+  }
+
+  // Yo I hate this...
+  export interface Album2 {
+    id: string; // number
+    name: string;
+    artist: string;
+    artistId: string; //number
+    coverArt: string;
+    songCount: string; //number
+    duration: string; //number
+    created: string; //timestamp
+    year: string; //number
+    genre?: string;
+  }
+
   export interface PlaylistDetails {
     playlist: Playlist;
     songs: Song[];
+  }
+
+  export interface AlbumDetails {
+    album: Album;
+    songs: Song[];
+  }
+
+  export type getAlbumTypes =
+    | 'random'
+    | 'newest'
+    | 'highest'
+    | 'frequent'
+    | 'recent'
+    | 'alphabeticalByName'
+    | 'alphabeticalByArtist'
+    | 'starred'
+    | 'byYear'
+    | 'byGenre';
+
+  export interface getAlbumOptions {
+    fromYear?: number;
+    toYear?: number;
+    genre?: string;
+    offset?: number;
+    size?: number;
   }
 
   export interface PlaylistUpdateRequest {
@@ -64,80 +126,6 @@ declare namespace airsonic {
     selected?: boolean;
     previousClicked?: boolean;
   }
-}
-
-declare namespace SubSonicApi {
-  export interface Response {
-    'subsonic-response': {
-      $: {
-        status: StatusTypes;
-        version: string;
-        xmlns: string;
-      };
-      playlists?: [
-        {
-          playlist?: PlaylistList[];
-        },
-      ];
-      playlist?: [
-        {
-          $: Playlist;
-          entry: SongList[];
-        },
-      ];
-    };
-  }
-
-  export interface Playlist {
-    id: string;
-    name: string;
-    comment: string;
-    owner: string;
-    public: string;
-    songCount: string;
-    duration: string;
-    created: string;
-    changed: string;
-    coverArt: string;
-  }
-
-  export interface PlaylistList {
-    $: Playlist;
-  }
-
-  export interface Song {
-    album: string;
-    albumId?: string;
-    artistId?: string;
-    artist: string;
-    discNumber?: string;
-    bitRate: string;
-    contentType: string;
-    coverArt?: string;
-    created: string;
-    duration: string;
-    genre?: string;
-    id: string;
-    isDir: string;
-    isVideo: string;
-    parent: string;
-    playCount?: string;
-    size: string;
-    starred?: string;
-    suffix: string;
-    title: string;
-    track?: string;
-    transcodedContentType?: string;
-    transcodedSuffix?: string;
-    type?: string;
-    year?: string;
-  }
-
-  export interface SongList {
-    $: Song;
-  }
-
-  export type StatusTypes = 'ok' | 'error';
 }
 
 declare namespace airsonicEvents {

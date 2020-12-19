@@ -1,16 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
 
 @Component({
-  selector: 'playlist-view',
-  templateUrl: './playlist-view.component.html',
-  styleUrls: ['./playlist-view.component.scss'],
+  selector: 'playlist-viewer',
+  templateUrl: './playlist-viewer.component.html',
+  styleUrls: ['./playlist-viewer.component.scss'],
 })
-export class PlaylistViewComponent implements OnInit, OnDestroy {
+export class PlaylistViewerComponent implements OnInit, OnDestroy {
   constructor(
     private playlistsFacade: PlaylistsFacade,
     private routerFacade: RouterFacade,

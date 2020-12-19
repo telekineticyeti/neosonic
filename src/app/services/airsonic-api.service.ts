@@ -4,7 +4,7 @@ import {environment as env} from '../../environments/environment';
 import {Md5} from 'ts-md5/dist/md5';
 import {parseString} from 'xml2js';
 import {map, catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class AirsonicApiService {
 
   public env = env;
 
-  public callApiEndpoint(url: string) {
+  public callApiEndpoint(url: string): Observable<SubSonicApi.Response> {
     const httpOptions = {
       responseType: 'text' as 'text',
     };
@@ -67,10 +67,6 @@ export class AirsonicApiService {
     const url = new URL(
       `${this.apiServer}/rest/${endpoint}${this.apiAuthStr()}`,
     );
-
-    // Object.entries(params).forEach(p => {
-    //   url.searchParams.append(p[0], p[1]);
-    // });
 
     params.forEach(p =>
       Object.entries(p).forEach(o => url.searchParams.append(o[0], o[1])),

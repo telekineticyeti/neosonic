@@ -1,0 +1,44 @@
+@import '~src/styles/variables';
+
+.albums-lister {
+  margin: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  mat-card {
+    // flex: 0 0 17.75%; // 5
+    flex: 0 0 22.75%; // 4
+    margin: 10px;
+    padding: 0;
+    min-width: 0;
+    cursor: pointer;
+    background: #4d4d4d;
+
+    .art {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .content {
+      height: 60px;
+      width: 100%;
+      overflow: hidden;
+      user-select: none;
+
+      .title {
+        @extend %font-montserrat;
+        font-weight: 500;
+        @extend %truncate-ellipsis;
+        font-size: 12px; // 0.8em
+        margin: 8px;
+      }
+      .artist {
+        @extend %font-open-sans;
+        @extend %truncate-ellipsis;
+        font-size: 11px;
+        margin: 8px 8px 0;
+      }
+    }
+  }
+}

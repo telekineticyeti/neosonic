@@ -28,6 +28,8 @@
     "@ngrx/schematics": "^10.0.0",
     "@ngrx/store": "^10.0.0",
     "@ngrx/store-devtools": "^10.0.0",
+    "js-base64": "^3.6.0",
+    "moment": "^2.29.1",
     "ramda": "^0.27.1",
     "rxjs": "~6.5.4",
     "stream": "^0.0.2",
