@@ -16,6 +16,9 @@ import {routerInitialState} from './router/router.reducer';
 import {RouterSerializer} from './router/router.serializer.class';
 import {SongEffects} from './songs/songs.effects';
 import {SongsFacade} from './songs/songs.facade';
+import {SearchEffects} from './search/search.effects';
+import {SearchService} from './search/search.service';
+import {SearchFacade} from './search/search.facade';
 
 @NgModule({
   imports: [
@@ -27,7 +30,12 @@ import {SongsFacade} from './songs/songs.facade';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([PlaylistsEffects, SongEffects, AlbumEffects]),
+    EffectsModule.forRoot([
+      PlaylistsEffects,
+      SongEffects,
+      AlbumEffects,
+      SearchEffects,
+    ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
@@ -37,6 +45,8 @@ import {SongsFacade} from './songs/songs.facade';
     SongsFacade,
     AlbumsFacade,
     RouterFacade,
+    SearchService,
+    SearchFacade,
     {provide: RouterStateSerializer, useClass: RouterSerializer},
   ],
 })

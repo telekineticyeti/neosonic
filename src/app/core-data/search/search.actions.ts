@@ -5,11 +5,10 @@ enum searchActions {
   QUERY = '[SEARCH] Start',
   QUERY_SUCCESS = '[SEARCH] Success',
   QUERY_FAIL = '[SEARCH] Fail',
+  CLEAR = '[SEARCH] Clear',
 }
 
 enum songActions {
-  SET_ALL = '[SONGS] Set',
-  REMOVE_ALL = '[SONGS] Remove All',
   CLICK = '[SONGS] Clicked',
   SET_SELECTED = '[SONGS] Set Selected',
   UNSET_SELECTED = '[SONGS] Unset Selected',
@@ -18,29 +17,30 @@ enum songActions {
 }
 
 enum albumActions {
-  SET_ALL = '[ALBUMS] Set List',
-  REMOVE_ALL = '[ALBUMS] Remove All',
   UPDATE_ONE = '[ALBUMS] Update One',
   UPDATE_MANY = '[ALBUMS] Update Many',
 }
 
 enum artistActions {
-  SET_ALL = '[ARTISTS] Set List',
-  REMOVE_ALL = '[ARTISTS] Remove All',
+  UPDATE_ONE = '[ARTISTS] Update One',
+  UPDATE_MANY = '[ARTISTS] Update Many',
 }
 
 export const SearchActions = {
   query: createAction(searchActions.QUERY, props<{query: string}>()),
   querySuccess: createAction(
     searchActions.QUERY_SUCCESS,
-    props<{songs: airsonic.Song[]; albums: airsonic.Album[]}>(),
+    props<{
+      songs: airsonic.Song[];
+      albums: airsonic.Album[];
+      artists: airsonic.Artist[];
+    }>(),
   ),
   queryFail: createAction(searchActions.QUERY_FAIL, props<Error>()),
+  clear: createAction(searchActions.CLEAR),
 };
 
 export const SearchSongActions = {
-  setAll: createAction(songActions.SET_ALL, props<{songs: airsonic.Song[]}>()),
-  removeAll: createAction(songActions.REMOVE_ALL),
   clicked: createAction(
     songActions.CLICK,
     props<{click: airsonicEvents.SongClick}>(),
@@ -64,11 +64,6 @@ export const SearchSongActions = {
 };
 
 export const SearchAlbumActions = {
-  setAll: createAction(
-    albumActions.SET_ALL,
-    props<{albums: airsonic.Album[]}>(),
-  ),
-  removeAll: createAction(albumActions.REMOVE_ALL),
   updateOne: createAction(
     albumActions.UPDATE_ONE,
     props<{update: Update<airsonic.Album>}>(),
@@ -80,9 +75,12 @@ export const SearchAlbumActions = {
 };
 
 export const SearchArtistActions = {
-  setAll: createAction(
-    artistActions.SET_ALL,
-    props<{artists: airsonic.Artist[]}>(),
+  updateOne: createAction(
+    artistActions.UPDATE_ONE,
+    props<{update: Update<airsonic.Artist>}>(),
   ),
-  removeAll: createAction(artistActions.REMOVE_ALL),
+  updateMany: createAction(
+    artistActions.UPDATE_MANY,
+    props<{updates: Update<airsonic.Artist>[]}>(),
+  ),
 };

@@ -1,10 +1,40 @@
 <div class="search-results">
-  <p>Query: {{ query | async }}</p>
   <h1>Search Results</h1>
 
-  <h2>Artists</h2>
+  <div
+    class="no-results"
+    *ngIf="
+      (searchFacade.artistTotal$ | async) <= 0 &&
+      (searchFacade.songTotal$ | async) <= 0 &&
+      (searchFacade.albumTotal$ | async) <= 0
+    "
+  >
+    <p>No results found for "{{ query | async }}"</p>
+  </div>
 
-  <h2>Songs</h2>
+  <div
+    class="results artist-results"
+    *ngIf="(searchFacade.artistTotal$ | async) > 0"
+  >
+    <h2>Artists ({{ searchFacade.artistTotal$ | async }})</h2>
+  </div>
 
-  <h2>Albums</h2>
+  <div
+    class="results song-results"
+    *ngIf="(searchFacade.songTotal$ | async) > 0"
+  >
+    <h2>Songs ({{ searchFacade.songTotal$ | async }})</h2>
+    <songs-lister [songs]="searchFacade.songResults$ | async"></songs-lister>
+  </div>
+
+  <div
+    class="results album-results"
+    *ngIf="(searchFacade.albumTotal$ | async) > 0"
+  >
+    <h2>Albums ({{ searchFacade.albumTotal$ | async }})</h2>
+    <!-- TODO: move album click method to an event? -->
+    <albums-lister
+      [albums]="searchFacade.albumResults$ | async"
+    ></albums-lister>
+  </div>
 </div>

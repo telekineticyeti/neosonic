@@ -9,3 +9,10 @@ export const albumAdapter: EntityAdapter<airsonic.Album> = createEntityAdapter<a
 export interface ISearchAlbumsState extends EntityState<airsonic.Album> {
   selectedId: string | null;
 }
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = albumAdapter.getSelectors();

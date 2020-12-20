@@ -1,10 +1,10 @@
-import {createReducer, on} from '@ngrx/store';
-import {albumAdapter, ISearchAlbumsState} from './search-albums.entity';
+import {Action, createReducer, on} from '@ngrx/store';
+import {ISearchAlbumsState, albumAdapter} from './search-albums.entity';
 import {ISearchArtistsState, artistAdapter} from './search-artists.entity';
 import {ISearchSongsState, songAdapter} from './search-songs.entity';
 import {
+  SearchActions,
   SearchAlbumActions,
-  SearchArtistActions,
   SearchSongActions,
 } from './search.actions';
 
@@ -20,18 +20,24 @@ export const initialState: ISearchState = {
   artists: artistAdapter.getInitialState({selectedId: null}),
 };
 
-const reducer = createReducer(
+export const reducer = createReducer(
   initialState,
 
-  // Songs
-  on(SearchSongActions.setAll, (state, {songs}) => ({
+  on(SearchActions.querySuccess, (state, {songs, albums, artists}) => ({
     ...state,
     songs: songAdapter.setAll(songs, state.songs),
+    albums: albumAdapter.setAll(albums, state.albums),
+    artists: artistAdapter.setAll(artists, state.artists),
   })),
-  on(SearchSongActions.removeAll, state => ({
+
+  on(SearchActions.clear, state => ({
     ...state,
     songs: songAdapter.removeAll(state.songs),
+    albums: albumAdapter.removeAll(state.albums),
+    artists: artistAdapter.removeAll(state.artists),
   })),
+
+  // Songs
   on(SearchSongActions.updateOne, (state, {update}) => ({
     ...state,
     songs: songAdapter.updateOne(update, state.songs),
@@ -42,14 +48,6 @@ const reducer = createReducer(
   })),
 
   // Albums
-  on(SearchAlbumActions.setAll, (state, {albums}) => ({
-    ...state,
-    albums: albumAdapter.setAll(albums, state.albums),
-  })),
-  on(SearchAlbumActions.removeAll, state => ({
-    ...state,
-    albums: albumAdapter.removeAll(state.albums),
-  })),
   on(SearchAlbumActions.updateOne, (state, {update}) => ({
     ...state,
     albums: albumAdapter.updateOne(update, state.albums),
@@ -60,12 +58,8 @@ const reducer = createReducer(
   })),
 
   // Artists
-  on(SearchArtistActions.setAll, (state, {artists}) => ({
-    ...state,
-    artists: artistAdapter.setAll(artists, state.artists),
-  })),
-  on(SearchArtistActions.removeAll, state => ({
-    ...state,
-    artists: artistAdapter.removeAll(state.artists),
-  })),
 );
+
+export function SearchReducer(state: ISearchState | undefined, action: Action) {
+  return reducer(state, action);
+}

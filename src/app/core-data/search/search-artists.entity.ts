@@ -9,3 +9,10 @@ export const artistAdapter: EntityAdapter<airsonic.Artist> = createEntityAdapter
 export interface ISearchArtistsState extends EntityState<airsonic.Artist> {
   selectedId: string | null;
 }
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = artistAdapter.getSelectors();
