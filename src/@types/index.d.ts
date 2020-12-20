@@ -1,96 +1,23 @@
 declare namespace airsonic {
-  export interface AlbumListResult {
-    artist: string;
-    artistId: string;
-    coverArt: string;
-    created: string;
-    duration: string;
-    genre?: string;
-    id: string;
-    name: string;
-    songCount: string;
-  }
-
-  export interface Album {
-    id: string; // number
-    artist: string;
-    artistId: string;
-    coverArt: string;
-    created: string; // timestamp
-    duration: string;
-    genre?: string;
-    name: string;
-  }
-
-  // Yo I hate this...
-  export interface Album2 {
-    id: string; // number
-    name: string;
-    artist: string;
-    artistId: string; //number
-    coverArt: string;
-    songCount: string; //number
-    duration: string; //number
-    created: string; //timestamp
-    year: string; //number
-    genre?: string;
-  }
-
-  export interface PlaylistDetails {
-    playlist: Playlist;
-    songs: Song[];
-  }
-
-  export interface AlbumDetails {
-    album: Album;
-    songs: Song[];
-  }
-
-  export type getAlbumTypes =
-    | 'random'
-    | 'newest'
-    | 'highest'
-    | 'frequent'
-    | 'recent'
-    | 'alphabeticalByName'
-    | 'alphabeticalByArtist'
-    | 'starred'
-    | 'byYear'
-    | 'byGenre';
-
-  export interface getAlbumOptions {
-    fromYear?: number;
-    toYear?: number;
-    genre?: string;
-    offset?: number;
-    size?: number;
-  }
-
-  export interface PlaylistUpdateRequest {
-    playlistId: string;
-    name?: string;
-    comment?: string;
-    public?: boolean;
-    songIdsToAdd?: string[];
-    songIndexesToRemove?: string[];
-  }
-
+  /**
+   * Generic interface for playlist objects
+   */
   export interface Playlist {
-    changed: string; // TODO: Timestamp conversion
+    changed: string;
     comment: string;
     coverArt: string;
-    created: string; // TODO: Timestamp conversion
-    // duration: number;
+    created: string;
     duration: string;
     id: string;
     owner: string;
     name: string;
-    // public: boolean;
     public: string;
-    // songCount: number;
     songCount: string;
   }
 
+  /**
+   * Generic interface for song objects
+   */
   export interface Song {
     album: string;
     albumId?: string;
@@ -100,19 +27,13 @@ declare namespace airsonic {
     bitRate: string;
     contentType: string;
     coverArt?: string;
-    created: string; // TODO: Timestamp conversion
-    // duration: number;
+    created: string;
     duration: string;
     genre?: string;
     id: string;
     isDir: string;
     isVideo: string;
-    // isDir: boolean;
-    // isVideo: boolean;
     parent: string;
-    // playCount?: number;
-    // size: number;
-    // starred?: boolean;
     playCount?: string;
     size: string;
     starred?: string;
@@ -125,6 +46,93 @@ declare namespace airsonic {
     year?: string;
     selected?: boolean;
     previousClicked?: boolean;
+  }
+
+  /**
+   * Generic interface for album objects
+   */
+  export interface Album {
+    artist: string;
+    artistId: string;
+    coverArt?: string;
+    created: string;
+    duration: string;
+    genre?: string;
+    id: string;
+    name: string;
+    songCount: string;
+  }
+
+  export interface AlbumViewItem extends Album {
+    year?: string;
+  }
+
+  /**
+   * http://www.subsonic.org/pages/api.jsp#getPlaylist
+   *
+   * Interface contains details of retrieved playlist in addition
+   * to a list of songs.
+   */
+  export interface PlaylistDetails {
+    playlist: Playlist;
+    songs: Song[];
+  }
+
+  /**
+   * http://www.subsonic.org/pages/api.jsp#getAlbum
+   *
+   * Interface contains details of album in addition
+   * to the album song list.
+   */
+  export interface AlbumDetails {
+    album: AlbumViewItem; // AlbumViewItem
+    songs: Song[];
+  }
+
+  /**
+   * http://www.subsonic.org/pages/api.jsp#getAlbumList2
+   *
+   * Album types that can be used to filter the /getAlbumList and
+   * /getAlbumList2 requests.
+   */
+  export type getAlbumTypes =
+    | 'random'
+    | 'newest'
+    | 'highest'
+    | 'frequent'
+    | 'recent'
+    | 'alphabeticalByName'
+    | 'alphabeticalByArtist'
+    | 'starred'
+    | 'byYear'
+    | 'byGenre';
+
+  /**
+   * http://www.subsonic.org/pages/api.jsp#getAlbumList2
+   *
+   * Additional options that can be applied to filter /getAlbumList and
+   * /getAlbumList2 requests.
+   *
+   * @link getAlbumTypes
+   */
+  export interface getAlbumOptions {
+    fromYear?: number;
+    toYear?: number;
+    genre?: string;
+    offset?: number;
+    size?: number;
+  }
+
+  /***
+   * http://www.subsonic.org/pages/api.jsp#updatePlaylist
+   */
+  export interface PlaylistUpdateRequest {
+    playlistId: string;
+    name?: string;
+    comment?: string;
+    public?: boolean;
+    songIdsToAdd?: string[];
+    songIndexesToRemove?: string[];
   }
 }
 

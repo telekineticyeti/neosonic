@@ -43,9 +43,7 @@ export class AlbumEffects {
           map(res => {
             const payload = res['subsonic-response'].albumList2[0];
 
-            const albums: airsonic.AlbumListResult[] = payload.album.map(
-              a => a.$,
-            );
+            const albums: airsonic.Album[] = payload.album.map(a => a.$);
 
             return AlbumActions.getListSuccess({albums});
           }),

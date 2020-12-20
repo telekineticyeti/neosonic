@@ -1,4 +1,11 @@
 <div class="album-details" *ngIf="albumDetails">
+  <div class="art">
+    <img
+      [coverArt]="albumDetails.album.coverArt"
+      alt="{{ albumDetails.album.name }}"
+      size="400"
+    />
+  </div>
   <div class="info">
     <h2>{{ albumDetails.album.name }}</h2>
     <h5 (click)="gotoArtist(albumDetails.album.artistId)">
@@ -14,13 +21,6 @@
         {{ albumDetails.album.genre }}
       </li>
     </ul>
-  </div>
-  <div class="art">
-    <img
-      [coverArt]="albumDetails.album.coverArt"
-      alt="{{ albumDetails.album.name }}"
-      size="400"
-    />
   </div>
 </div>
 
