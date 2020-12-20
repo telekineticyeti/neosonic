@@ -67,6 +67,13 @@ declare namespace airsonic {
     year?: string;
   }
 
+  export interface Artist {
+    id: string;
+    name: string;
+    coverArt: string;
+    albumCount: string;
+  }
+
   /**
    * http://www.subsonic.org/pages/api.jsp#getPlaylist
    *

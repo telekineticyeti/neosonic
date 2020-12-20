@@ -7,11 +7,11 @@ enum actions {
   GET_FAIL = '[ALBUM] Get Album Fail',
   DELETE_DETAILS = '[ALBUM] Delete Details',
 
-  GET_LIST = '[ALBUM] Get Albums List',
-  GET_LIST_SUCCESS = '[ALBUM] Get Albums List Success',
-  GET_LIST_FAIL = '[ALBUM] Get Albums List Fail',
+  GET_LIST = '[ALBUMS] Get Albums List',
+  GET_LIST_SUCCESS = '[ALBUMS] Get Albums List Success',
+  GET_LIST_FAIL = '[ALBUMS] Get Albums List Fail',
 
-  DELETEALL = '[SONG] Delete All Songs',
+  DELETEALL = '[ALBUMS] Delete All Albums',
   UPDATE_ONE = '[ALBUM] Update One',
   UPDATE_MANY = '[ALBUMS] Update Many',
 }
@@ -37,16 +37,16 @@ export const AlbumActions = {
     actions.GET_LIST_SUCCESS,
     props<{albums: airsonic.Album[]}>(),
   ),
-  getListFail: createAction(actions.GET_FAIL, props<Error>()),
+  getListFail: createAction(actions.GET_LIST_FAIL, props<Error>()),
 
   deleteAll: createAction(actions.DELETEALL),
 
   updateOne: createAction(
     actions.UPDATE_ONE,
-    props<{update: Update<airsonic.Song>}>(),
+    props<{update: Update<airsonic.Album>}>(),
   ),
   updateMany: createAction(
     actions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Song>[]}>(),
+    props<{updates: Update<airsonic.Album>[]}>(),
   ),
 };

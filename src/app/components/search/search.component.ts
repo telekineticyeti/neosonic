@@ -3,7 +3,7 @@ import {BehaviorSubject, Subscription} from 'rxjs';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 
 @Component({
-  selector: 'app-search',
+  selector: 'search-view',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   public query = new BehaviorSubject('');
 
   public ngOnInit(): void {
-    console.log('created');
     const searchQuery$ = this.routerFacade.params$.subscribe(p => {
       this.query.next(p.query);
     });
