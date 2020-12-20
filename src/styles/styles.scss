@@ -1,3 +1,5 @@
+@import '~src/styles/variables';
+
 html,
 body {
   height: 100%;
@@ -10,18 +12,32 @@ body {
   color: #e9e9e9;
 }
 
-// .container {
-//   display: flex;
-//   margin: 10px;
-//   flex-wrap: wrap;
-//   & [class*='col'] {
-//     padding: 10px;
-//     flex: 1;
-//   }
-// }
+.page-header {
+  margin: 0 0 10px;
+  @extend %font-montserrat;
+  font-size: 2em;
+  font-weight: 200;
+}
 
-// * {
-//   box-sizing: border-box;
-// }
-// font-family: 'Montserrat', sans-serif;
-// font-family: 'Open Sans', sans-serif;
+.section-header {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 0 0 10px;
+  @extend %font-montserrat;
+}
+
+.page-header,
+.section-header {
+  .dimmer {
+    opacity: 0.5;
+    font-weight: 200;
+  }
+}
+
+.page-view {
+  padding: 20px;
+
+  .section-header {
+    margin-top: 30px;
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'albums-lister',
@@ -7,14 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AlbumsListerComponent implements OnInit {
   @Input() public albums: airsonic.Album[];
+  @Output() public albumClick = new EventEmitter<airsonicEvents.AlbumClick>();
 
   get empty(): boolean {
     return !this.albums.length;
   }
 
   public ngOnInit(): void {}
-
-  public click(event: MouseEvent, album: airsonic.Album): void {
-    console.log(event, album);
-  }
 }

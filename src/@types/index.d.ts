@@ -144,8 +144,19 @@ declare namespace airsonic {
 }
 
 declare namespace airsonicEvents {
-  export interface SongClick {
+  interface ItemClick {
     event: MouseEvent;
+  }
+
+  export interface SongClick extends ItemClick {
     song: airsonic.Song;
+  }
+
+  export interface AlbumClick extends ItemClick {
+    album: airsonic.Album;
+  }
+
+  export interface ArtistClick extends ItemClick {
+    artist: airsonic.Artist;
   }
 }

@@ -1,23 +1,25 @@
 @import '~src/styles/variables';
+@import '~src/styles/extenders';
 
 .albums-lister {
-  margin: 0 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 20px;
 
   mat-card {
-    // flex: 0 0 17.75%; // 5
-    flex: 0 0 22.75%; // 4
-    margin: 10px;
+    flex: 0 0 23.2%;
     padding: 0;
     min-width: 0;
     cursor: pointer;
     background: #4d4d4d;
+    background: none;
+    box-shadow: none;
 
     .art {
-      width: 100%;
-      border-radius: 4px 4px 0 0;
+      @extend %cover-art-style;
+      @extend %animations-hover-grow;
+      border-radius: 4px;
     }
 
     .content {

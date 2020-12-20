@@ -1,0 +1,88 @@
+@import '~src/styles/variables';
+
+%cover-art-style {
+  position: relative;
+  box-shadow: 3px 3px 8px rgba(black, 0.25);
+  border: 1px solid rgba(white, 0.1);
+  overflow: hidden;
+
+  // Mantain square aspect ratio
+  &:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  // Placeholder for albums without cover-art.
+  .placeholder {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(white, 0.05);
+    &::ng-deep svg {
+      box-sizing: border-box;
+      padding: 20px;
+      path {
+        fill: rgba(white, 0.05);
+      }
+    }
+  }
+
+  img.cover-art {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+%backdrop-art-style {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.15;
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: cover;
+  }
+
+  &:after {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #1e1e1e;
+    background: linear-gradient(
+      0deg,
+      rgba(#1e1e1e, 1) 0%,
+      rgba(#1e1e1e, 0) 100%
+    );
+  }
+}
+
+%animations-hover-grow {
+  transform-origin: center center;
+  transition-duration: 150ms;
+  &:hover {
+    box-shadow: 3px 3px 8px rgba(black, 0.75);
+    transform: scale(1.05);
+  }
+}

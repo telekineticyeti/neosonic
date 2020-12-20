@@ -1,70 +1,21 @@
 <div class="albums-lister" *ngIf="albums">
-  <mat-card *ngFor="let album of albums" routerLink="../album/{{ album.id }}">
-    <img class="art" [coverArt]="album.coverArt" alt="{{ album.title }}" />
+  <mat-card
+    *ngFor="let album of albums"
+    (click)="albumClick.emit({event: $event, album: album.id})"
+  >
+    <div class="art">
+      <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
+      <img
+        class="cover-art"
+        *ngIf="album.coverArt"
+        [coverArt]="album.coverArt"
+        size="400"
+        alt="{{ album.title }}"
+      />
+    </div>
     <div class="content">
       <div class="title">{{ album.name }}</div>
-      <div class="artist">{{ album.artist }} {{ album.id }}</div>
+      <div class="artist">{{ album.artist }}</div>
     </div>
   </mat-card>
-
-  <br /><br /><br /><br /><br />
-  <mat-list
-    role="list"
-    cdkDropList
-    #albumList="cdkDropList"
-    [cdkDropListData]="albums"
-    *ngIf="1 > 2"
-  >
-    <mat-list-item role="listitem" *ngIf="empty">
-      Nothing here yet...
-    </mat-list-item>
-
-    <mat-list-item
-      role="listitem"
-      *ngFor="let album of albums"
-      (click)="click($event, album)"
-      cdkDrag
-    >
-      <div class="content">
-        {{ album.title }}
-        <!-- <mat-icon
-          class="favourite"
-          [svgIcon]="song.starred ? 'heart_full' : 'heart_empty'"
-          [matTooltip]="
-            song.starred ? 'Favourited on ...' : 'Add to favourites'
-          "
-          [matTooltipShowDelay]="1000"
-          matTooltipPosition="above"
-          (click)="toggleFavourite($event, song)"
-        ></mat-icon>
-        <div
-          class="title"
-          [matTooltip]="song.title"
-          [matTooltipShowDelay]="1000"
-          matTooltipPosition="above"
-        >
-          {{ song.title }}
-        </div>
-        <div
-          class="artist"
-          [matTooltip]="song.artist"
-          [matTooltipShowDelay]="1000"
-          matTooltipPosition="above"
-        >
-          {{ song.artist }}
-        </div>
-        <div
-          class="album"
-          [matTooltip]="song.album"
-          [matTooltipShowDelay]="1000"
-          matTooltipPosition="above"
-        >
-          {{ song.album }}
-        </div>
-        <div class="playcount">
-          {{ song.playCount }}
-        </div> -->
-      </div>
-    </mat-list-item>
-  </mat-list>
 </div>

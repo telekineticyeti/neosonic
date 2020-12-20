@@ -1,6 +1,21 @@
-<div class="album-details" *ngIf="albumDetails">
+<div
+  class="backdrop-art"
+  *ngIf="albumDetails && albumDetails.album.coverArt"
+  aria-hidden="true"
+>
+  <img
+    class="backdrop-cover-art"
+    [coverArt]="albumDetails.album.coverArt"
+    size="1200"
+  />
+</div>
+
+<div class="page-view album-details" *ngIf="albumDetails">
   <div class="art">
+    <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
     <img
+      class="cover-art"
+      *ngIf="albumDetails.album.coverArt"
       [coverArt]="albumDetails.album.coverArt"
       alt="{{ albumDetails.album.name }}"
       size="400"

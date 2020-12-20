@@ -12,7 +12,8 @@
 - [ ] Album Browser Infinite Scroll
 - [ ] Album Drag & Drop
 - [ ] Artist browser
-- [ ] Search
+- [x] Search
+- [ ] Toaster feedbacks
 
 # Improvements for later
 

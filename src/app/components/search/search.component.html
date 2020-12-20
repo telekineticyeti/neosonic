@@ -1,5 +1,5 @@
-<div class="search-results">
-  <h1>Search Results</h1>
+<div class="page-view search-results">
+  <h1 class="page-header">Search Results</h1>
 
   <div
     class="no-results"
@@ -16,14 +16,19 @@
     class="results artist-results"
     *ngIf="(searchFacade.artistTotal$ | async) > 0"
   >
-    <h2>Artists ({{ searchFacade.artistTotal$ | async }})</h2>
+    <h2 class="section-header">
+      Artists
+      <span class="dimmer">({{ searchFacade.artistTotal$ | async }})</span>
+    </h2>
   </div>
 
   <div
     class="results song-results"
     *ngIf="(searchFacade.songTotal$ | async) > 0"
   >
-    <h2>Songs ({{ searchFacade.songTotal$ | async }})</h2>
+    <h2 class="section-header">
+      Songs <span class="dimmer">({{ searchFacade.songTotal$ | async }})</span>
+    </h2>
     <songs-lister [songs]="searchFacade.songResults$ | async"></songs-lister>
   </div>
 
@@ -31,10 +36,13 @@
     class="results album-results"
     *ngIf="(searchFacade.albumTotal$ | async) > 0"
   >
-    <h2>Albums ({{ searchFacade.albumTotal$ | async }})</h2>
-    <!-- TODO: move album click method to an event? -->
+    <h2 class="section-header">
+      Albums
+      <span class="dimmer">({{ searchFacade.albumTotal$ | async }})</span>
+    </h2>
     <albums-lister
       [albums]="searchFacade.albumResults$ | async"
+      (albumClick)="albumClick($event)"
     ></albums-lister>
   </div>
 </div>
