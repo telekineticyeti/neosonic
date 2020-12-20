@@ -1,0 +1,15 @@
+@import '~src/styles/variables';
+
+.search-form {
+  padding: 0 10px;
+
+  mat-form-field ::ng-deep {
+    .mat-form-field-infix {
+      // TODO: Hacky fix
+      width: 158px;
+    }
+    .mat-form-field-suffix {
+      opacity: 0.5;
+    }
+  }
+}

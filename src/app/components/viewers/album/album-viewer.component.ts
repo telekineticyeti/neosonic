@@ -49,6 +49,7 @@ export class AlbumViewerComponent implements OnInit, OnDestroy {
   }
 
   public gotoArtist(id: string): void {
+    // TODO
     console.log(id);
   }
 }

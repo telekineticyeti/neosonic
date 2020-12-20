@@ -29,7 +29,13 @@ declare namespace SubSonicApi {
           entry: GetSongList[];
         },
       ];
-      searchResult2?: {};
+      searchResult3?: [
+        {
+          artist?: GetArtistList[];
+          album?: GetAlbumList[];
+          song?: GetSongList[];
+        },
+      ];
       artist?: {};
       album?: {};
     };
@@ -117,6 +123,10 @@ declare namespace SubSonicApi {
     name: string;
     coverArt: string;
     albumCount: string;
+  }
+
+  export interface GetArtistList {
+    $: Artist;
   }
 
   export interface GetSongList {
