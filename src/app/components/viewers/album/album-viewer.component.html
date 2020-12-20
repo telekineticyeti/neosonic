@@ -1,13 +1,14 @@
 <div
   class="backdrop-art"
-  *ngIf="albumDetails && albumDetails.album.coverArt"
   aria-hidden="true"
+  *ngIf="albumDetails && albumDetails.album.coverArt"
 >
   <img
     class="backdrop-cover-art"
     [coverArt]="albumDetails.album.coverArt"
     size="1200"
   />
+  <p>{{ (albumFacade.albumDetails$ | async)['coverArt'] }}</p>
 </div>
 
 <div class="page-view album-details" *ngIf="albumDetails">

@@ -20,8 +20,8 @@ export class PlaylistViewerComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     const playlistId$ = this.routerFacade.params$.subscribe(p => {
-      if (!p.id) return;
-      this.playlistsFacade.getPlaylist(p.id);
+      if (!p.playlistId) return;
+      this.playlistsFacade.getPlaylist(p.playlistId);
     });
 
     this.subscriptions.push(playlistId$);

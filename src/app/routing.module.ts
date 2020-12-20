@@ -8,7 +8,7 @@ import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-vi
 
 const routes: Routes = [
   {
-    path: 'playlists/:id',
+    path: 'playlists/:playlistId',
     component: PlaylistViewerComponent,
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     component: AlbumsComponent,
   },
   {
-    path: 'album/:id',
+    path: 'album/:albumId',
     component: AlbumViewerComponent,
   },
   {

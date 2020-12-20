@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {skip, take} from 'rxjs/operators';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
@@ -21,8 +22,8 @@ export class AlbumViewerComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     const albumId$ = this.routerFacade.params$.subscribe(p => {
-      if (!p.id) return;
-      this.albumFacade.getAlbum(p.id);
+      if (!p.albumId) return;
+      this.albumFacade.getAlbum(p.albumId);
     });
 
     const albumDetails$ = this.albumFacade.albumDetails$.subscribe(
@@ -33,8 +34,8 @@ export class AlbumViewerComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.albumFacade.destroyCleanup();
     this.subscriptions.forEach(s => s.unsubscribe());
+    this.albumFacade.destroyCleanup();
   }
 
   public songCount(count: string): string {
