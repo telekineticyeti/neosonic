@@ -12,7 +12,7 @@
       role="listitem"
       *ngFor="let song of songs"
       [ngClass]="{selected: song.selected}"
-      (click)="click($event, song)"
+      (click)="songClick.emit({event: $event, song: song})"
       cdkDrag
     >
       <div class="song-content">

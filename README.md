@@ -27,3 +27,5 @@
 - [ ] Search Icon / Clear Button
 - [ ] Recent Searches (from persist)
 - [ ] Load Spinner
+- [ ] Keyboard Shortcuts
+- [ ] Move songclick logic to utility service to reduce code duplication

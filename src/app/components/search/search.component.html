@@ -29,7 +29,10 @@
     <h2 class="section-header">
       Songs <span class="dimmer">({{ searchFacade.songTotal$ | async }})</span>
     </h2>
-    <songs-lister [songs]="searchFacade.songResults$ | async"></songs-lister>
+    <songs-lister
+      [songs]="searchFacade.songResults$ | async"
+      (songClick)="songClick($event)"
+    ></songs-lister>
   </div>
 
   <div

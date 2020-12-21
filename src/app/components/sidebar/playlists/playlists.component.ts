@@ -20,14 +20,19 @@ export class PlaylistsComponent {
   @Input() playlists: airsonic.Playlist[];
 
   public drop(
-    event: CdkDragDrop<airsonic.Song>,
+    event: CdkDragDrop<airsonic.Song[]>,
     playlist: airsonic.Playlist,
   ): void {
-    this.songsFacade.selectedSongs$.pipe(take(1)).subscribe(songs => {
-      this.playlistsFacade.updatePlaylist({
-        playlistId: playlist.id,
-        songIdsToAdd: songs.map(s => s.id),
-      });
+    const droppedItem = event.previousContainer.data[event.previousIndex];
+    const songsToAdd = event.previousContainer.data.filter(s => s.selected);
+
+    if (!droppedItem.selected) {
+      songsToAdd.push(droppedItem);
+    }
+
+    this.playlistsFacade.updatePlaylist({
+      playlistId: playlist.id,
+      songIdsToAdd: songsToAdd.map(s => s.id),
     });
   }
 

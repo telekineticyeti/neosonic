@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {State} from '../core-data.reducer';
-import {SearchActions} from './search.actions';
+import {SearchActions, SearchSongActions} from './search.actions';
 import {SearchSelectors} from './search.selectors';
 
 @Injectable()
@@ -21,5 +21,9 @@ export class SearchFacade {
 
   public clear(): void {
     this.store.dispatch(SearchActions.clear());
+  }
+
+  public songClick(click: airsonicEvents.SongClick): void {
+    this.store.dispatch(SearchSongActions.clicked({click}));
   }
 }
