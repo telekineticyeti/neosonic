@@ -1,22 +1,24 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
 import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
+import {AutoUnsubscribeAdapter} from '../../shared/adapters/auto-unsubscribe.adapter';
 
 @Component({
   selector: 'playlist-viewer',
   templateUrl: './playlist-viewer.component.html',
   styleUrls: ['./playlist-viewer.component.scss'],
 })
-export class PlaylistViewerComponent implements OnInit, OnDestroy {
+export class PlaylistViewerComponent
+  extends AutoUnsubscribeAdapter
+  implements OnInit, OnDestroy {
   constructor(
     private playlistsFacade: PlaylistsFacade,
     private routerFacade: RouterFacade,
     public songsFacade: SongsFacade,
-  ) {}
-
-  private subscriptions: Subscription[] = [];
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
     const playlistId$ = this.routerFacade.params$.subscribe(p => {
@@ -24,12 +26,12 @@ export class PlaylistViewerComponent implements OnInit, OnDestroy {
       this.playlistsFacade.getPlaylist(p.playlistId);
     });
 
-    this.subscriptions.push(playlistId$);
+    this.subscribers.push(playlistId$);
   }
 
   public ngOnDestroy(): void {
-    this.songsFacade.emptySongs();
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.unsubscribeFromAll();
+    this.subscribers.forEach(s => s.unsubscribe());
   }
 
   public songClick(e: airsonicEvents.SongClick): void {

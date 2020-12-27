@@ -1,23 +1,25 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {skip, take} from 'rxjs/operators';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
+import {AutoUnsubscribeAdapter} from '../../shared/adapters/auto-unsubscribe.adapter';
 
 @Component({
   selector: 'album-viewer',
   templateUrl: './album-viewer.component.html',
   styleUrls: ['./album-viewer.component.scss'],
 })
-export class AlbumViewerComponent implements OnInit, OnDestroy {
+export class AlbumViewerComponent
+  extends AutoUnsubscribeAdapter
+  implements OnInit, OnDestroy {
   constructor(
     public albumFacade: AlbumsFacade,
     public songsFacade: SongsFacade,
     private routerFacade: RouterFacade,
-  ) {}
+  ) {
+    super();
+  }
 
-  private subscriptions: Subscription[] = [];
   public albumDetails?: airsonic.AlbumDetails;
 
   public ngOnInit(): void {
@@ -30,11 +32,11 @@ export class AlbumViewerComponent implements OnInit, OnDestroy {
       a => (this.albumDetails = a),
     );
 
-    this.subscriptions.push(albumId$, albumDetails$);
+    this.subscribers.push(albumId$, albumDetails$);
   }
 
   public ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.unsubscribeFromAll();
     this.albumFacade.destroyCleanup();
   }
 

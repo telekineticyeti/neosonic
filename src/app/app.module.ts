@@ -25,6 +25,8 @@ import {AlbumsComponent} from './components/albums/albums.component';
 import {CoverArtDirective} from './directives/cover-art.directive';
 import {DurationPipe} from './pipes/duration/duration.pipe';
 import {UtilityService} from './services/utlity.service';
+import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
+import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscribe.adapter';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import {UtilityService} from './services/utlity.service';
     CoverArtDirective,
     DurationPipe,
     SearchComponent,
+    ArtistViewerComponent,
+    AutoUnsubscribeAdapter,
   ],
   imports: [
     BrowserModule,
