@@ -23,6 +23,7 @@ import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-vi
 import {AlbumsComponent} from './components/albums/albums.component';
 import {CoverArtDirective} from './directives/cover-art.directive';
 import {DurationPipe} from './pipes/duration/duration.pipe';
+import {UtilityService} from './services/utlity.service';
 
 @NgModule({
   declarations: [
@@ -53,5 +54,6 @@ import {DurationPipe} from './pipes/duration/duration.pipe';
     CoreDataModule,
   ],
   bootstrap: [AppComponent],
+  providers: [UtilityService],
 })
 export class AppModule {}

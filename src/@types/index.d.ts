@@ -150,6 +150,7 @@ declare namespace airsonicEvents {
 
   export interface SongClick extends ItemClick {
     song: airsonic.Song;
+    songList?: airsonic.Song[];
   }
 
   export interface AlbumClick extends ItemClick {

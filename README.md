@@ -6,7 +6,6 @@
 - [x] Multiselect Songs
 - [x] Album Viewer
 - [x] Album Viewer - Song Drag & Drop
-- [ ] Album Viewer - More by this artist
 - [ ] Album Browser
 - [ ] Album Browser by Type
 - [ ] Album Browser Infinite Scroll
@@ -17,6 +16,7 @@
 
 # Improvements for later
 
+- [ ] Album Viewer - More by this artist
 - [ ] Context menus for playlist/songs
 - [ ] Artist Drag & Drop
 - [ ] Create Playlist Button
@@ -28,4 +28,4 @@
 - [ ] Recent Searches (from persist)
 - [ ] Load Spinner
 - [ ] Keyboard Shortcuts
-- [ ] Move songclick logic to utility service to reduce code duplication
+- [x] Move songclick logic to utility service to reduce code duplication
