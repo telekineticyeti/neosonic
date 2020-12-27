@@ -52,9 +52,6 @@ export class UtilityService {
     if (isShiftPressed) {
       const previouslyClicked = songList.findIndex(s => s.previousClicked);
       const currentlyClicked = songList.findIndex(s => s.id === clickedSong.id);
-
-      console.log(previouslyClicked, currentlyClicked);
-
       const songSelectRange =
         previouslyClicked < currentlyClicked
           ? songList.slice(previouslyClicked, currentlyClicked).map(s => s.id)

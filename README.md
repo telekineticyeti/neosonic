@@ -13,6 +13,7 @@
 - [ ] Artist browser
 - [x] Search
 - [ ] Toaster feedbacks
+- [ ] Drag & Drop preview improvements
 
 # Improvements for later
 

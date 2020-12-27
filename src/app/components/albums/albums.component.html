@@ -1,4 +1,7 @@
 <div class="page-view">
   <h1 class="page-header">Albums</h1>
-  <albums-lister [albums]="albumsFacade.all$ | async"></albums-lister>
+  <albums-lister
+    [albums]="albumsFacade.all$ | async"
+    (albumClick)="albumClick($event)"
+  ></albums-lister>
 </div>

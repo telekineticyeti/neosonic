@@ -20,6 +20,10 @@
       Artists
       <span class="dimmer">({{ searchFacade.artistTotal$ | async }})</span>
     </h2>
+    <artists-lister
+      [artists]="searchFacade.artistResults$ | async"
+      (artistClick)="artistClick($event)"
+    ></artists-lister>
   </div>
 
   <div

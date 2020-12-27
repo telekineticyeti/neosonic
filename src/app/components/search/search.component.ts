@@ -39,7 +39,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/album/${event.album}`);
   }
 
-  public songClick(e: airsonicEvents.SongClick): void {
-    this.searchFacade.songClick(e);
+  public songClick(event: airsonicEvents.SongClick): void {
+    this.searchFacade.songClick(event);
+  }
+
+  public artistClick(event: airsonicEvents.ArtistClick): void {
+    console.log(event);
+    // this.router.navigateByUrl(`/album/${event.album}`);
   }
 }

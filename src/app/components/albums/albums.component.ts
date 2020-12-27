@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
 
 @Component({
@@ -7,9 +8,13 @@ import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
   styleUrls: ['./albums.component.scss'],
 })
 export class AlbumsComponent implements OnInit {
-  constructor(public albumsFacade: AlbumsFacade) {}
+  constructor(public albumsFacade: AlbumsFacade, private router: Router) {}
 
   public ngOnInit(): void {
     this.albumsFacade.getAlbumList('newest', {size: 22});
+  }
+
+  public albumClick(event: airsonicEvents.AlbumClick): void {
+    this.router.navigateByUrl(`/album/${event.album}`);
   }
 }

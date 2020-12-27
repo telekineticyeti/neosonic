@@ -1,0 +1,20 @@
+<div class="artists-lister" *ngIf="artists">
+  <mat-card
+    *ngFor="let artist of artists"
+    (click)="artistClick.emit({event: $event, artist: artist.id})"
+  >
+    <div class="art">
+      <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
+      <img
+        class="cover-art"
+        *ngIf="artist.coverArt"
+        [coverArt]="artist.coverArt"
+        size="400"
+        alt="{{ artist.name }}"
+      />
+    </div>
+    <div class="content">
+      <div class="artist">{{ artist.name }}</div>
+    </div>
+  </mat-card>
+</div>

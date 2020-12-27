@@ -17,6 +17,7 @@ import {BrowseComponent} from './components/sidebar/browse/browse.component';
 import {SidebarSearchComponent} from './components/sidebar/search/search.component';
 import {AlbumsListerComponent} from './components/listers/albums/albums-lister.component';
 import {SongsListerComponent} from './components/listers/songs/songs-lister.component';
+import {ArtistsListerComponent} from './components/listers/artists/artists-lister.component';
 
 import {AlbumViewerComponent} from './components/viewers/album/album-viewer.component';
 import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-viewer.component';
@@ -36,6 +37,7 @@ import {UtilityService} from './services/utlity.service';
     BrowseComponent,
     SidebarSearchComponent,
     AlbumsListerComponent,
+    ArtistsListerComponent,
     SongsListerComponent,
     AlbumViewerComponent,
     CoverArtDirective,
