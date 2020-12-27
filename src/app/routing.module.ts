@@ -4,6 +4,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {AlbumsComponent} from './components/albums/albums.component';
 import {SearchComponent} from './components/search/search.component';
 import {AlbumViewerComponent} from './components/viewers/album/album-viewer.component';
+import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
 import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-viewer.component';
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'album/:albumId',
     component: AlbumViewerComponent,
+  },
+  {
+    path: 'artist/:artistId',
+    component: ArtistViewerComponent,
   },
   {
     path: 'search/:query',

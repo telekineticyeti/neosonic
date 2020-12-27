@@ -36,7 +36,22 @@ declare namespace SubSonicApi {
           song?: GetSongList[];
         },
       ];
-      artist?: {};
+      artist?: [
+        {
+          $: GetArtistEntity;
+          album?: GetAlbumList[];
+        },
+      ];
+      artistInfo2?: [
+        {
+          biography?: string;
+          musicBrainzId?: string;
+          lastFmUrl?: string;
+          smallImageUrl?: string;
+          mediumImageUrl?: string;
+          largeImageUrl?: string;
+        },
+      ];
       album?: {};
     };
   }
@@ -44,6 +59,13 @@ declare namespace SubSonicApi {
   export interface Error {
     code: string;
     message: string;
+  }
+
+  export interface Artist {
+    id: string;
+    name: string;
+    coverArt: string;
+    albumCount: string;
   }
 
   export interface Playlist {
@@ -118,7 +140,9 @@ declare namespace SubSonicApi {
     songCount: string;
   }
 
-  export interface Artist {
+  // http://www.subsonic.org/pages/api.jsp#getArtistInfo2
+  // http://www.subsonic.org/pages/api.jsp#getArtist
+  export interface GetArtistEntity {
     id: string;
     name: string;
     coverArt: string;
@@ -139,6 +163,10 @@ declare namespace SubSonicApi {
 
   export interface GetAlbum {
     $: GetAlbumEntity;
+  }
+
+  export interface GetArtist {
+    $: GetArtistEntity;
   }
 
   export type StatusTypes = 'ok' | 'error';

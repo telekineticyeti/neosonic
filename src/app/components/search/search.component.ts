@@ -44,7 +44,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public artistClick(event: airsonicEvents.ArtistClick): void {
-    console.log(event);
-    // this.router.navigateByUrl(`/album/${event.album}`);
+    this.router.navigateByUrl(`/artist/${event.artist}`);
   }
 }

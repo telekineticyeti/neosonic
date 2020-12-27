@@ -74,6 +74,15 @@ declare namespace airsonic {
     albumCount: string;
   }
 
+  export interface ArtistInfo {
+    biography?: string;
+    musicBrainzId?: string;
+    lastFmUrl?: string;
+    smallImageUrl?: string;
+    mediumImageUrl?: string;
+    largeImageUrl?: string;
+  }
+
   /**
    * http://www.subsonic.org/pages/api.jsp#getPlaylist
    *

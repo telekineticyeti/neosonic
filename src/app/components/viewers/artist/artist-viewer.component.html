@@ -1,0 +1,48 @@
+<!-- <div
+  class="backdrop-art"
+  aria-hidden="true"
+  *ngIf="albumDetails && albumDetails.album.coverArt"
+>
+  <img
+    class="backdrop-cover-art"
+    [coverArt]="albumDetails.album.coverArt"
+    size="1200"
+  />
+  <p>{{ (albumFacade.albumDetails$ | async)['coverArt'] }}</p>
+</div>
+
+<div class="page-view album-details" *ngIf="albumDetails">
+  <div class="art">
+    <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
+    <img
+      class="cover-art"
+      *ngIf="albumDetails.album.coverArt"
+      [coverArt]="albumDetails.album.coverArt"
+      alt="{{ albumDetails.album.name }}"
+      size="400"
+    />
+  </div>
+  <div class="info">
+    <h2>{{ albumDetails.album.name }}</h2>
+    <h5 (click)="gotoArtist(albumDetails.album.artistId)">
+      <span class="byline">by</span> {{ albumDetails.album.artist }}
+    </h5>
+    <ul class="meta">
+      <li class="year" *ngIf="albumDetails.album.year">
+        {{ albumDetails.album.year }}
+      </li>
+      <li class="count">{{ songCount(albumDetails.album.songCount) }}</li>
+      <li class="duration">{{ albumDetails.album.duration | duration }}</li>
+      <li class="genre" *ngIf="albumDetails.album.genre">
+        {{ albumDetails.album.genre }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<songs-lister
+  [songs]="songsFacade.all$ | async"
+  (songClick)="songClick($event)"
+></songs-lister>
+
+More by this artist -->

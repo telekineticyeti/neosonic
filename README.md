@@ -10,7 +10,7 @@
 - [ ] Album Browser by Type
 - [ ] Album Browser Infinite Scroll
 - [ ] Album Drag & Drop
-- [ ] Artist browser
+- [ ] Artist Viewer
 - [x] Search
 - [ ] Toaster feedbacks
 - [ ] Drag & Drop preview improvements
