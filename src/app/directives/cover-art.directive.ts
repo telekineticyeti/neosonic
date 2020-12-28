@@ -1,11 +1,11 @@
-import {Directive, ElementRef, HostBinding, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 import {take} from 'rxjs/operators';
 import {AlbumsService} from '../core-data/albums/albums.service';
 
 @Directive({
   selector: '[coverArt]',
 })
-export class CoverArtDirective implements OnInit {
+export class CoverArtDirective {
   constructor(
     private albumService: AlbumsService,
     private node: ElementRef<any>,
@@ -14,7 +14,7 @@ export class CoverArtDirective implements OnInit {
   @Input() public coverArt: string;
   @HostBinding('attr.size') @Input() public size: number = 200;
 
-  public ngOnInit(): void {
+  ngOnChanges() {
     this.albumService
       .getCoverArt(this.coverArt, this.size)
       .pipe(take(1))

@@ -4,7 +4,6 @@ import {Action} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 
-import {SongActions} from '../songs/songs.actions';
 import {PlaylistActions} from './playlists.actions';
 import {PlaylistsService} from './playlists.service';
 
