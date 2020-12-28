@@ -1,8 +1,44 @@
-<!-- TODO: Playlist Details -->
-<songs-lister
-  [songs]="songsFacade.all$ | async"
-  (songClick)="handleSongClick($event)"
-  (albumClick)="handleAlbumClick($event)"
-  (artistClick)="handleArtistClick($event)"
-  (favClick)="handleFavClick($event)"
-></songs-lister>
+<div
+  class="page-view playlist-details"
+  *ngIf="playlistsFacade.playlistInfo$ | async"
+>
+  <div class="art">
+    <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
+    <img
+      class="cover-art"
+      *ngIf="(playlistsFacade.playlistInfo$ | async).playlist.coverArt"
+      [coverArt]="(playlistsFacade.playlistInfo$ | async).playlist.coverArt"
+      alt="{{ (playlistsFacade.playlistInfo$ | async).playlist.name }}"
+      size="400"
+    />
+  </div>
+
+  <div class="info">
+    <h2>{{ (playlistsFacade.playlistInfo$ | async).playlist.name }}</h2>
+    <p class="comment">
+      {{ (playlistsFacade.playlistInfo$ | async).playlist.comment }}
+    </p>
+    <ul class="meta">
+      <li class="count">
+        {{
+          (playlistsFacade.playlistInfo$ | async).playlist.songCount | songCount
+        }}
+      </li>
+      <li class="duration">
+        {{
+          (playlistsFacade.playlistInfo$ | async).playlist.duration | duration
+        }}
+      </li>
+    </ul>
+  </div>
+
+  <songs-lister
+    [songs]="songsFacade.all$ | async"
+    [removeButton]="true"
+    (songClick)="handleSongClick($event)"
+    (albumClick)="handleAlbumClick($event)"
+    (artistClick)="handleArtistClick($event)"
+    (favClick)="handleFavClick($event)"
+    (removeClick)="handleRemoveClick($event)"
+  ></songs-lister>
+</div>

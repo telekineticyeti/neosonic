@@ -42,13 +42,6 @@ export class AlbumViewerComponent
     this.albumFacade.destroyCleanup();
   }
 
-  public songCount(count: string): string {
-    const numcount = parseInt(count);
-    if (isNaN(numcount)) return;
-
-    return numcount > 1 ? `${count} songs` : `${count} song`;
-  }
-
   public gotoArtist(id: string): void {
     this.router.navigateByUrl(`/artist/${id}`);
   }

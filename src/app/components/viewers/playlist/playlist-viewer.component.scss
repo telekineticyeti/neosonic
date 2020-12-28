@@ -1,0 +1,18 @@
+@import '~src/styles/variables';
+@import '~src/styles/extenders';
+
+.playlist-details {
+  @extend %playlist-album-layout;
+}
+
+.info {
+  @extend %playlist-album-info;
+}
+
+.art {
+  @extend %cover-art-style;
+}
+
+songs-lister {
+  grid-column: 1/3;
+}

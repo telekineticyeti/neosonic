@@ -49,6 +49,19 @@
   }
 }
 
+.remove {
+  width: 18px;
+  height: 18px;
+  opacity: 0.15;
+  cursor: pointer;
+  transition: 150ms;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
 .artist,
 .title,
 .album {

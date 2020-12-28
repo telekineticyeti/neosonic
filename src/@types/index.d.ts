@@ -173,4 +173,9 @@ declare namespace airsonicEvents {
   export interface FavouriteClick extends ItemClick {
     song: airsonic.Song;
   }
+
+  export interface RemoveClick extends ItemClick {
+    song: airsonic.Song;
+    songList: airsonic.Song[];
+  }
 }

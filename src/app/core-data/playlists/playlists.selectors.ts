@@ -13,4 +13,5 @@ export const PlaylistsSelectors = {
   playlistById: createSelector(selectPlaylists, getSelectors => (id: string) =>
     getSelectors.entities[id],
   ),
+  playlistInfo: createSelector(selectPlaylists, state => state.playlistDetails),
 };

@@ -46,23 +46,4 @@ export class AlbumsService {
       this.airSonicApi.constructEndpointUrl('getCoverArt', [{id}, {size}]).href,
     );
   }
-
-  // http://www.subsonic.org/pages/api.jsp#updatePlaylist
-  // public updatePlaylist(
-  //   update: Partial<airsonic.PlaylistUpdateRequest>,
-  // ): Observable<SubSonicApi.Response> {
-  //   const params = [];
-  //   update.playlistId && params.push({playlistId: update.playlistId});
-  //   update.name && params.push({name: update.name});
-  //   update.public && params.push({public: update.public});
-  //   update.comment && params.push({public: update.comment});
-
-  //   if (update.songIdsToAdd.length) {
-  //     update.songIdsToAdd.forEach(sid => params.push({songIdToAdd: sid}));
-  //   }
-
-  //   const url = this.airSonicApi.constructEndpointUrl('updatePlaylist', params);
-
-  //   return this.airSonicApi.callApiEndpoint(url.href);
-  // }
 }

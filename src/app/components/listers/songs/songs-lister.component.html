@@ -61,6 +61,16 @@
             song.album
           }}</span>
         </div>
+
+        <mat-icon
+          *ngIf="removeButton"
+          class="remove"
+          [svgIcon]="'remove'"
+          [matTooltip]="'Remove from playlist'"
+          [matTooltipShowDelay]="1000"
+          matTooltipPosition="above"
+          (click)="removeClicked({event: $event, song: song, songList: songs})"
+        ></mat-icon>
         <!-- <div class="playcount">
           {{ song.playCount }}
         </div> -->

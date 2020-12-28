@@ -49,5 +49,9 @@ export class MaterialModule {
       'headphones',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/headphones.svg'),
     );
+    iconRegistry.addSvgIcon(
+      'remove',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/remove.svg'),
+    );
   }
 }

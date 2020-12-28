@@ -31,7 +31,9 @@
       <li class="year" *ngIf="albumDetails.album.year">
         {{ albumDetails.album.year }}
       </li>
-      <li class="count">{{ songCount(albumDetails.album.songCount) }}</li>
+      <li class="count">
+        {{ albumDetails.album.songCount | songCount }}
+      </li>
       <li class="duration">{{ albumDetails.album.duration | duration }}</li>
       <li class="genre" *ngIf="albumDetails.album.genre">
         {{ albumDetails.album.genre }}

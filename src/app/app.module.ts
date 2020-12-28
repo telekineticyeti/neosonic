@@ -23,7 +23,8 @@ import {AlbumViewerComponent} from './components/viewers/album/album-viewer.comp
 import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-viewer.component';
 import {AlbumsComponent} from './components/albums/albums.component';
 import {CoverArtDirective} from './directives/cover-art.directive';
-import {DurationPipe} from './pipes/duration/duration.pipe';
+import {DurationPipe} from './pipes/duration.pipe';
+import {SongCountPipe} from './pipes/song-count.pipe';
 import {UtilityService} from './services/utlity.service';
 import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
 import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscribe.adapter';
@@ -44,6 +45,7 @@ import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscr
     AlbumViewerComponent,
     CoverArtDirective,
     DurationPipe,
+    SongCountPipe,
     SearchComponent,
     ArtistViewerComponent,
     AutoUnsubscribeAdapter,

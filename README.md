@@ -10,10 +10,11 @@
 - [ ] Album Browser by Type
 - [ ] Album Browser Infinite Scroll
 - [ ] Album Drag & Drop
-- x ] Artist Viewer
+- [x] Artist Viewer
 - [x] Search
 - [ ] Toaster feedbacks
 - [ ] Drag & Drop preview improvements
+- [ ] Playlist removal to trigger reload of songs
 
 # Improvements for later
 
@@ -22,7 +23,7 @@
 - [ ] Artist Drag & Drop ?
 - [ ] Create Playlist Button
 - [ ] Server login & persistance
-- [ ] Playlist Details
+- [x] Playlist Details
 - [ ] Playlist Creation/Editing
 - [ ] Search typeahead
 - [ ] Search Icon / Clear Button

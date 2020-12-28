@@ -15,17 +15,20 @@ export class PlaylistViewerComponent
   implements OnInit, OnDestroy {
   constructor(
     public songsFacade: SongsFacade,
-    private playlistsFacade: PlaylistsFacade,
+    public playlistsFacade: PlaylistsFacade,
     private routerFacade: RouterFacade,
     private router: Router,
   ) {
     super();
   }
 
+  public playlistId: string;
+
   public ngOnInit(): void {
     const playlistId$ = this.routerFacade.params$.subscribe(p => {
       if (!p.playlistId) return;
       this.playlistsFacade.getPlaylist(p.playlistId);
+      this.playlistId = p.playlistId;
     });
 
     this.subscribers.push(playlistId$);
@@ -33,7 +36,6 @@ export class PlaylistViewerComponent
 
   public ngOnDestroy(): void {
     this.unsubscribeFromAll();
-    this.subscribers.forEach(s => s.unsubscribe());
   }
 
   public handleSongClick(e: airsonicEvents.SongClick): void {
@@ -50,5 +52,15 @@ export class PlaylistViewerComponent
 
   public handleFavClick(event: any): void {
     console.log(event);
+  }
+
+  public handleRemoveClick(event: airsonicEvents.RemoveClick): void {
+    const removePositionIndex = event.songList.findIndex(
+      e => e.id === event.song.id,
+    );
+    this.playlistsFacade.updatePlaylist({
+      playlistId: this.playlistId,
+      songIndexesToRemove: [removePositionIndex.toString()],
+    });
   }
 }

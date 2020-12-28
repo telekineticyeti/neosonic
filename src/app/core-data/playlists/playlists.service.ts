@@ -6,16 +6,11 @@ import {AirsonicApiService} from 'src/app/services/airsonic-api.service';
 export class PlaylistsService {
   constructor(private airSonicApi: AirsonicApiService) {}
 
-  private api = `${this.airSonicApi.apiServer}/rest`;
-  private apiGetPlaylists = `${this.api}/getPlaylists`;
-  private apiGetPlaylist = `${this.api}/getPlaylist`;
-  private apiUpdatePlaylist = `${this.api}/updatePlaylist`;
-
   /**
    * @returns XML list of playlists
    */
   public getPlaylists(): Observable<SubSonicApi.Response> {
-    const url = this.apiGetPlaylists + this.airSonicApi.apiAuthStr();
+    const url = this.airSonicApi.constructEndpointUrl('getPlaylists', []).href;
     return this.airSonicApi.callApiEndpoint(url);
   }
 
@@ -24,8 +19,8 @@ export class PlaylistsService {
    * @param id ID of playlist
    */
   public getPlaylist(id: string): Observable<SubSonicApi.Response> {
-    const url =
-      this.apiGetPlaylist + this.airSonicApi.apiAuthStr() + `&id=${id}`;
+    const url = this.airSonicApi.constructEndpointUrl('getPlaylist', [{id}])
+      .href;
     return this.airSonicApi.callApiEndpoint(url);
   }
 
@@ -39,12 +34,19 @@ export class PlaylistsService {
     update.public && params.push({public: update.public});
     update.comment && params.push({public: update.comment});
 
-    if (update.songIdsToAdd.length) {
+    if (update.songIdsToAdd) {
       update.songIdsToAdd.forEach(sid => params.push({songIdToAdd: sid}));
     }
 
-    const url = this.airSonicApi.constructEndpointUrl('updatePlaylist', params);
+    if (update.songIndexesToRemove) {
+      update.songIndexesToRemove.forEach(sid =>
+        params.push({songIndexToRemove: sid}),
+      );
+    }
 
-    return this.airSonicApi.callApiEndpoint(url.href);
+    const url = this.airSonicApi.constructEndpointUrl('updatePlaylist', params)
+      .href;
+
+    return this.airSonicApi.callApiEndpoint(url);
   }
 }

@@ -5,6 +5,7 @@ import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 
 export interface IPlaylistsState extends EntityState<airsonic.Playlist> {
   selectedId: string | null;
+  playlistDetails?: airsonic.PlaylistDetails;
 }
 
 export const adapter: EntityAdapter<airsonic.Playlist> = createEntityAdapter<airsonic.Playlist>(
@@ -22,9 +23,10 @@ const playlistsReducer = createReducer(
   on(PlaylistActions.getAllSuccess, (state, {playlists}) =>
     adapter.setAll(playlists, state),
   ),
-  on(PlaylistActions.getSuccess, (state, {playlist}) => {
-    return state;
-  }),
+  on(PlaylistActions.getSuccess, (state, {playlist}) => ({
+    ...state,
+    playlistDetails: playlist,
+  })),
 
   on(PlaylistActions.debug, (state, debug) => {
     console.log(debug);

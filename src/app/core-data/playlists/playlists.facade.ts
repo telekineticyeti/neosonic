@@ -12,6 +12,7 @@ export class PlaylistsFacade {
   public keys$ = this.store.select(PlaylistsSelectors.keys);
   public playlistById$ = this.store.select(PlaylistsSelectors.playlistById);
   public allPlaylists$ = this.store.select(PlaylistsSelectors.selectAll);
+  public playlistInfo$ = this.store.select(PlaylistsSelectors.playlistInfo);
 
   public getAllPlaylists(): void {
     this.store.dispatch(PlaylistActions.getAll());

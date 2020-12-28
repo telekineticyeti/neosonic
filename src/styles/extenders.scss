@@ -86,3 +86,46 @@
     transform: scale(1.05);
   }
 }
+
+%playlist-album-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: 20px;
+}
+
+%playlist-album-info {
+  h2,
+  h5 {
+    margin: 0;
+    @extend %font-montserrat;
+  }
+  h5 {
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .byline {
+    opacity: 0.3;
+    margin-right: 5px;
+    font-style: italic;
+  }
+
+  ul.meta {
+    list-style-type: none;
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 12px;
+    opacity: 0.75;
+    @extend %font-open-sans;
+
+    li {
+      display: inline-block;
+      margin: 0 10px 0 0;
+    }
+    .genre {
+      margin-top: 10px;
+      display: block;
+    }
+  }
+}
