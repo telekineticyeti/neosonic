@@ -2,6 +2,7 @@
   <h1 class="page-header">Albums</h1>
   <albums-lister
     [albums]="albumsFacade.all$ | async"
-    (albumClick)="albumClick($event)"
+    (albumClick)="handleAlbumClick($event)"
+    (artistClick)="handleArtistClick($event)"
   ></albums-lister>
 </div>

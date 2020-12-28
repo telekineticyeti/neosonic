@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
@@ -16,6 +17,7 @@ export class AlbumViewerComponent
     public albumFacade: AlbumsFacade,
     public songsFacade: SongsFacade,
     private routerFacade: RouterFacade,
+    private router: Router,
   ) {
     super();
   }
@@ -47,12 +49,23 @@ export class AlbumViewerComponent
     return numcount > 1 ? `${count} songs` : `${count} song`;
   }
 
-  public songClick(e: airsonicEvents.SongClick): void {
+  public gotoArtist(id: string): void {
+    this.router.navigateByUrl(`/artist/${id}`);
+  }
+
+  public handleSongClick(e: airsonicEvents.SongClick): void {
     this.songsFacade.click(e);
   }
 
-  public gotoArtist(id: string): void {
-    // TODO
-    console.log(id);
+  public handleArtistClick(event: airsonicEvents.ArtistClick): void {
+    this.router.navigateByUrl(`/artist/${event.artist}`);
+  }
+
+  public handleAlbumClick(event: airsonicEvents.AlbumClick): void {
+    this.router.navigateByUrl(`/album/${event.album}`);
+  }
+
+  public handleFavClick(event: any): void {
+    console.log(event);
   }
 }

@@ -1,0 +1,63 @@
+@import '~src/styles/variables';
+@import '~src/styles/extenders';
+
+.artist-details {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: 20px;
+}
+
+.backdrop-art {
+  @extend %backdrop-art-style;
+}
+
+.info {
+  h2,
+  h5 {
+    margin: 0;
+    @extend %font-montserrat;
+  }
+  h5 {
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .bio ::ng-deep {
+    @extend %font-open-sans;
+    font-weight: 200;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(black, 0.5);
+
+    a:link,
+    a:visited {
+      color: white;
+    }
+  }
+}
+
+.results {
+  grid-column: 1 / 3;
+}
+
+// ul.meta {
+//   list-style-type: none;
+//   margin: 10px 0 0;
+//   padding: 0;
+//   font-size: 12px;
+//   opacity: 0.75;
+//   @extend %font-open-sans;
+
+//   li {
+//     display: inline-block;
+//     margin: 0 10px 0 0;
+//   }
+//   .genre {
+//     margin-top: 10px;
+//     display: block;
+//   }
+// }
+
+.art {
+  @extend %cover-art-style;
+}

@@ -15,7 +15,12 @@
     </div>
     <div class="content">
       <div class="title">{{ album.name }}</div>
-      <div class="artist">{{ album.artist }}</div>
+      <div
+        class="artist"
+        (click)="artistClicked({event: $event, artist: album.artistId})"
+      >
+        {{ album.artist }}
+      </div>
     </div>
   </mat-card>
 </div>

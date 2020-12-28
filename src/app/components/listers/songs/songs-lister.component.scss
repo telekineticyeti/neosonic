@@ -21,6 +21,11 @@
     &.selected {
       background: rgba($primary, 0.5);
     }
+
+    &.headers {
+      opacity: 0.4;
+      pointer-events: none;
+    }
   }
 }
 
@@ -49,6 +54,17 @@
 .album {
   @extend %truncate-ellipsis;
   @extend %disable-selection;
+}
+
+.artist,
+.album {
+  span {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      color: $primary;
+    }
+  }
 }
 
 .playcount {

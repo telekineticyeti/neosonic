@@ -7,9 +7,16 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class AlbumsListerComponent {
   @Input() public albums: airsonic.Album[];
+  @Output() public artistClick = new EventEmitter<airsonicEvents.ArtistClick>();
   @Output() public albumClick = new EventEmitter<airsonicEvents.AlbumClick>();
 
-  get empty(): boolean {
-    return !this.albums.length;
+  public artistClicked(click: airsonicEvents.ArtistClick): void {
+    click.event.stopImmediatePropagation();
+    this.artistClick.emit(click);
+  }
+
+  public albumClicked(click: airsonicEvents.AlbumClick): void {
+    click.event.stopImmediatePropagation();
+    this.albumClick.emit();
   }
 }

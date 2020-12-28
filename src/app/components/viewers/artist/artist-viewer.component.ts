@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {ArtistsFacade} from 'src/app/core-data/artists/artists.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {AutoUnsubscribeAdapter} from '../../shared/adapters/auto-unsubscribe.adapter';
@@ -12,8 +13,9 @@ export class ArtistViewerComponent
   extends AutoUnsubscribeAdapter
   implements OnInit {
   constructor(
-    private artistFacade: ArtistsFacade,
-    private routerFacade: RouterFacade,
+    public artistFacade: ArtistsFacade,
+    public routerFacade: RouterFacade,
+    private router: Router,
   ) {
     super();
   }
@@ -27,7 +29,16 @@ export class ArtistViewerComponent
     this.subscribers.push(artistId$);
   }
 
-  // Artists Ablums [entity]
-  // Artists top songs [entity]
-  // Artist info
+  public ngOnDestroy(): void {
+    this.unsubscribeFromAll();
+    this.artistFacade.clear();
+  }
+
+  public handleAlbumClick(event: airsonicEvents.AlbumClick): void {
+    this.router.navigateByUrl(`/album/${event.album}`);
+  }
+
+  public handleArtistClick(event: airsonicEvents.ArtistClick): void {
+    this.router.navigateByUrl(`/artist/${event.artist}`);
+  }
 }

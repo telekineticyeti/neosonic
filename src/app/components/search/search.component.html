@@ -22,7 +22,7 @@
     </h2>
     <artists-lister
       [artists]="searchFacade.artistResults$ | async"
-      (artistClick)="artistClick($event)"
+      (artistClick)="handleArtistClick($event)"
     ></artists-lister>
   </div>
 
@@ -35,7 +35,10 @@
     </h2>
     <songs-lister
       [songs]="searchFacade.songResults$ | async"
-      (songClick)="songClick($event)"
+      (songClick)="handleSongClick($event)"
+      (albumClick)="handleAlbumClick($event)"
+      (artistClick)="handleArtistClick($event)"
+      (favClick)="handleFavClick($event)"
     ></songs-lister>
   </div>
 
@@ -49,7 +52,7 @@
     </h2>
     <albums-lister
       [albums]="searchFacade.albumResults$ | async"
-      (albumClick)="albumClick($event)"
+      (albumClick)="handleAlbumClick($event)"
     ></albums-lister>
   </div>
 </div>

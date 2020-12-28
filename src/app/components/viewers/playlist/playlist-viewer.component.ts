@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {PlaylistsFacade} from 'src/app/core-data/playlists/playlists.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
@@ -13,9 +14,10 @@ export class PlaylistViewerComponent
   extends AutoUnsubscribeAdapter
   implements OnInit, OnDestroy {
   constructor(
+    public songsFacade: SongsFacade,
     private playlistsFacade: PlaylistsFacade,
     private routerFacade: RouterFacade,
-    public songsFacade: SongsFacade,
+    private router: Router,
   ) {
     super();
   }
@@ -34,7 +36,19 @@ export class PlaylistViewerComponent
     this.subscribers.forEach(s => s.unsubscribe());
   }
 
-  public songClick(e: airsonicEvents.SongClick): void {
+  public handleSongClick(e: airsonicEvents.SongClick): void {
     this.songsFacade.click(e);
+  }
+
+  public handleArtistClick(event: airsonicEvents.ArtistClick): void {
+    this.router.navigateByUrl(`/artist/${event.artist}`);
+  }
+
+  public handleAlbumClick(event: airsonicEvents.AlbumClick): void {
+    this.router.navigateByUrl(`/album/${event.album}`);
+  }
+
+  public handleFavClick(event: any): void {
+    console.log(event);
   }
 }

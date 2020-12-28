@@ -14,7 +14,11 @@ export class AlbumsComponent implements OnInit {
     this.albumsFacade.getAlbumList('newest', {size: 22});
   }
 
-  public albumClick(event: airsonicEvents.AlbumClick): void {
+  public handleAlbumClick(event: airsonicEvents.AlbumClick): void {
     this.router.navigateByUrl(`/album/${event.album}`);
+  }
+
+  public handleArtistClick(event: airsonicEvents.ArtistClick): void {
+    this.router.navigateByUrl(`/artist/${event.artist}`);
   }
 }

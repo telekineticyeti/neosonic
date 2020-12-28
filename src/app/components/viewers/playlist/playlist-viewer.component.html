@@ -1,5 +1,8 @@
 <!-- TODO: Playlist Details -->
 <songs-lister
   [songs]="songsFacade.all$ | async"
-  (songClick)="songClick($event)"
+  (songClick)="handleSongClick($event)"
+  (albumClick)="handleAlbumClick($event)"
+  (artistClick)="handleArtistClick($event)"
+  (favClick)="handleFavClick($event)"
 ></songs-lister>

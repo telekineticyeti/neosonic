@@ -40,6 +40,11 @@
         @extend %truncate-ellipsis;
         font-size: 11px;
         margin: 8px 8px 0;
+        cursor: pointer;
+        &:hover,
+        &:focus {
+          color: $primary;
+        }
       }
     }
   }

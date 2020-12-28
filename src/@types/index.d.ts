@@ -163,10 +163,14 @@ declare namespace airsonicEvents {
   }
 
   export interface AlbumClick extends ItemClick {
-    album: airsonic.Album;
+    album: string;
   }
 
   export interface ArtistClick extends ItemClick {
-    artist: airsonic.Artist;
+    artist: string;
+  }
+
+  export interface FavouriteClick extends ItemClick {
+    song: airsonic.Song;
   }
 }

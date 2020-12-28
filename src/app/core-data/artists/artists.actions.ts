@@ -23,4 +23,5 @@ export const ArtistActions = {
     props<{info: airsonic.ArtistInfo}>(),
   ),
   getInfoFail: createAction(artistActions.GETINFO_FAIL, props<Error>()),
+  clear: createAction(artistActions.CLEAR),
 };

@@ -35,15 +35,19 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  public albumClick(event: airsonicEvents.AlbumClick): void {
-    this.router.navigateByUrl(`/album/${event.album}`);
-  }
-
-  public songClick(event: airsonicEvents.SongClick): void {
+  public handleSongClick(event: airsonicEvents.SongClick): void {
     this.searchFacade.songClick(event);
   }
 
-  public artistClick(event: airsonicEvents.ArtistClick): void {
+  public handleArtistClick(event: airsonicEvents.ArtistClick): void {
     this.router.navigateByUrl(`/artist/${event.artist}`);
+  }
+
+  public handleAlbumClick(event: airsonicEvents.AlbumClick): void {
+    this.router.navigateByUrl(`/album/${event.album}`);
+  }
+
+  public handleFavClick(event: any): void {
+    console.log(event);
   }
 }

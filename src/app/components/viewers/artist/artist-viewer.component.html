@@ -1,48 +1,50 @@
-<!-- <div
+<div
   class="backdrop-art"
   aria-hidden="true"
-  *ngIf="albumDetails && albumDetails.album.coverArt"
+  *ngIf="
+    (artistFacade.selectedArtist$ | async) &&
+    (artistFacade.selectedArtist$ | async).coverArt
+  "
 >
   <img
     class="backdrop-cover-art"
-    [coverArt]="albumDetails.album.coverArt"
+    [coverArt]="(artistFacade.selectedArtist$ | async).coverArt"
     size="1200"
   />
-  <p>{{ (albumFacade.albumDetails$ | async)['coverArt'] }}</p>
 </div>
 
-<div class="page-view album-details" *ngIf="albumDetails">
+<div
+  class="page-view artist-details"
+  *ngIf="artistFacade.selectedArtist$ | async"
+>
   <div class="art">
     <mat-icon class="placeholder" svgIcon="headphones"></mat-icon>
     <img
       class="cover-art"
-      *ngIf="albumDetails.album.coverArt"
-      [coverArt]="albumDetails.album.coverArt"
-      alt="{{ albumDetails.album.name }}"
+      *ngIf="artistFacade.selectedArtist$ | async"
+      [coverArt]="(artistFacade.selectedArtist$ | async).coverArt"
+      alt="{{ (artistFacade.selectedArtist$ | async).name }}"
       size="400"
     />
   </div>
+
   <div class="info">
-    <h2>{{ albumDetails.album.name }}</h2>
-    <h5 (click)="gotoArtist(albumDetails.album.artistId)">
-      <span class="byline">by</span> {{ albumDetails.album.artist }}
-    </h5>
-    <ul class="meta">
-      <li class="year" *ngIf="albumDetails.album.year">
-        {{ albumDetails.album.year }}
-      </li>
-      <li class="count">{{ songCount(albumDetails.album.songCount) }}</li>
-      <li class="duration">{{ albumDetails.album.duration | duration }}</li>
-      <li class="genre" *ngIf="albumDetails.album.genre">
-        {{ albumDetails.album.genre }}
-      </li>
-    </ul>
+    <h2>{{ (artistFacade.selectedArtist$ | async).name }}</h2>
+
+    <div class="artistInfo" *ngIf="artistFacade.info$ | async">
+      <p class="bio" [innerHtml]="(artistFacade.info$ | async).biography"></p>
+    </div>
+  </div>
+
+  <div class="results albums" *ngIf="(artistFacade.albumsTotal$ | async) > 0">
+    <h2 class="section-header">
+      Albums
+      <span class="dimmer">({{ artistFacade.albumsTotal$ | async }})</span>
+    </h2>
+    <albums-lister
+      [albums]="artistFacade.albums$ | async"
+      (albumClick)="handleAlbumClick($event)"
+      (artistClick)="handleArtistClick($event)"
+    ></albums-lister>
   </div>
 </div>
-
-<songs-lister
-  [songs]="songsFacade.all$ | async"
-  (songClick)="songClick($event)"
-></songs-lister>
-
-More by this artist -->

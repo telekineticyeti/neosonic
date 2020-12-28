@@ -9,7 +9,8 @@ export class ArtistsListerComponent {
   @Input() public artists: airsonic.Artist[];
   @Output() public artistClick = new EventEmitter<airsonicEvents.ArtistClick>();
 
-  get empty(): boolean {
-    return !this.artists.length;
+  public artistClicked(click: airsonicEvents.ArtistClick): void {
+    click.event.stopImmediatePropagation();
+    this.artistClick.emit(click);
   }
 }

@@ -11,9 +11,11 @@ const selectAlbums = createSelector(selectArtist, state => state.albums);
 const selectedArtist = createSelector(selectArtist, state => state.selected);
 const info = createSelector(selectArtist, state => state.info);
 const albums = createSelector(selectAlbums, fromAlbumReducer.selectAll);
+const albumsTotal = createSelector(selectAlbums, fromAlbumReducer.selectTotal);
 
 export const ArtistSelectors = {
   selectedArtist,
   info,
   albums,
+  albumsTotal,
 };

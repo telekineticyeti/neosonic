@@ -23,6 +23,9 @@ export const reducer = createReducer(
     albums: albumAdapter.setAll(albums, state.albums),
   })),
   on(ArtistActions.getInfoSuccess, (state, {info}) => ({...state, info})),
+  on(ArtistActions.clear, () => {
+    return initialState;
+  }),
 );
 
 export function ArtistReducer(state: IArtistState | undefined, action: Action) {

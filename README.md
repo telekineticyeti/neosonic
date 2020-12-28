@@ -10,7 +10,7 @@
 - [ ] Album Browser by Type
 - [ ] Album Browser Infinite Scroll
 - [ ] Album Drag & Drop
-- [ ] Artist Viewer
+- x ] Artist Viewer
 - [x] Search
 - [ ] Toaster feedbacks
 - [ ] Drag & Drop preview improvements
@@ -19,7 +19,7 @@
 
 - [ ] Album Viewer - More by this artist
 - [ ] Context menus for playlist/songs
-- [ ] Artist Drag & Drop
+- [ ] Artist Drag & Drop ?
 - [ ] Create Playlist Button
 - [ ] Server login & persistance
 - [ ] Playlist Details

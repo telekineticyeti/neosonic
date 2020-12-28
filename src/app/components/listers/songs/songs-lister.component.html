@@ -1,13 +1,19 @@
-<div class="list-songs" *ngIf="songs">
+<div class="list-songs" *ngIf="songs.length">
   <mat-list
     role="list"
     cdkDropList
     #songlist="cdkDropList"
     [cdkDropListData]="songs"
   >
-    <mat-list-item role="listitem" *ngIf="empty">
-      Nothing here yet...
+    <mat-list-item role="listitem" class="headers">
+      <div class="song-content">
+        <div></div>
+        <div>Title</div>
+        <div>Artist</div>
+        <div>Album</div>
+      </div>
     </mat-list-item>
+
     <mat-list-item
       role="listitem"
       *ngFor="let song of songs"
@@ -24,7 +30,7 @@
           "
           [matTooltipShowDelay]="1000"
           matTooltipPosition="above"
-          (click)="toggleFavourite($event, song)"
+          (click)="favClicked({event: $event, song: song})"
         ></mat-icon>
         <div
           class="title"
@@ -40,7 +46,10 @@
           [matTooltipShowDelay]="1000"
           matTooltipPosition="above"
         >
-          {{ song.artist }}
+          <span
+            (click)="artistClicked({event: $event, artist: song.artistId})"
+            >{{ song.artist }}</span
+          >
         </div>
         <div
           class="album"
@@ -48,11 +57,13 @@
           [matTooltipShowDelay]="1000"
           matTooltipPosition="above"
         >
-          {{ song.album }}
+          <span (click)="albumClicked({event: $event, album: song.albumId})">{{
+            song.album
+          }}</span>
         </div>
-        <div class="playcount">
+        <!-- <div class="playcount">
           {{ song.playCount }}
-        </div>
+        </div> -->
       </div>
     </mat-list-item>
   </mat-list>
