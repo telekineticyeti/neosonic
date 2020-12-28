@@ -33,7 +33,7 @@
   </div>
 
   <songs-lister
-    [songs]="songsFacade.all$ | async"
+    [songs]="playlistsFacade.allSongs$ | async"
     [removeButton]="true"
     (songClick)="handleSongClick($event)"
     (albumClick)="handleAlbumClick($event)"

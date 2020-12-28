@@ -1,57 +1,44 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {PlaylistActions} from './playlists.actions';
 
-import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
+import {IPlaylistListsState, playlistAdapter} from './playlists-lists.entity';
+import {IPlaylistSongsState, songAdapter} from './playlists-songs.entity';
 
-export interface IPlaylistsState extends EntityState<airsonic.Playlist> {
-  selectedId: string | null;
-  playlistDetails?: airsonic.PlaylistDetails;
+export interface IPlaylistsState {
+  selectedPlaylist?: airsonic.PlaylistDetails;
+  selectedPlaylistSongs: IPlaylistSongsState;
+  playlists: IPlaylistListsState;
 }
 
-export const adapter: EntityAdapter<airsonic.Playlist> = createEntityAdapter<airsonic.Playlist>(
-  {
-    selectId: (playlist: airsonic.Playlist): string => playlist.id,
-  },
-);
+export const initialState: IPlaylistsState = {
+  selectedPlaylistSongs: songAdapter.getInitialState({selectedId: null}),
+  playlists: playlistAdapter.getInitialState({selectedId: null}),
+};
 
-const initialState: IPlaylistsState = adapter.getInitialState({
-  selectedId: null,
-});
-
-const playlistsReducer = createReducer(
+const reducer = createReducer(
   initialState,
-  on(PlaylistActions.getAllSuccess, (state, {playlists}) =>
-    adapter.setAll(playlists, state),
-  ),
+  on(PlaylistActions.getAllSuccess, (state, {playlists}) => ({
+    ...state,
+    playlists: playlistAdapter.setAll(playlists, state.playlists),
+  })),
   on(PlaylistActions.getSuccess, (state, {playlist}) => ({
     ...state,
-    playlistDetails: playlist,
+    selectedPlaylist: playlist,
+    selectedPlaylistSongs: songAdapter.setAll(
+      playlist.songs,
+      state.selectedPlaylistSongs,
+    ),
   })),
-
-  on(PlaylistActions.debug, (state, debug) => {
-    console.log(debug);
-    return state;
-  }),
+  // on(PlaylistActions.getSuccess, (state, {playlist}) => ({
+  //   ...state,
+  //   selectedPlaylist: playlist,
+  //   selectedPlaylistSongs:
+  // })),
 );
 
 export function PlaylistsReducer(
   state: IPlaylistsState | undefined,
   action: Action,
 ) {
-  return playlistsReducer(state, action);
+  return reducer(state, action);
 }
-
-const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal,
-} = adapter.getSelectors();
-
-export const getSelectors = {
-  ids: selectIds,
-  entities: selectEntities,
-  all: selectAll,
-  total: selectTotal,
-  selectedId: (state: IPlaylistsState) => state.selectedId,
-};

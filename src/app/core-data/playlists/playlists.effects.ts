@@ -54,12 +54,8 @@ export class PlaylistsEffects {
               songs: payload.entry ? payload.entry.map(s => s.$) : [],
             };
 
-            return playlist;
+            return PlaylistActions.getSuccess({playlist});
           }),
-          switchMap(playlist => [
-            PlaylistActions.getSuccess({playlist}),
-            SongActions.getSuccess({songs: playlist.songs}),
-          ]),
           catchError((error: Error) => [
             PlaylistActions.getFail(error),
             PlaylistActions.debug({
@@ -84,7 +80,16 @@ export class PlaylistsEffects {
                 new Error('API Request Failed'),
               );
             }
-            return PlaylistActions.updateSuccess();
+            return payload.playlistId;
+          }),
+          switchMap(id => {
+            const successActions = [];
+            successActions.push(PlaylistActions.updateSuccess());
+
+            if (typeof id === 'string') {
+              successActions.push(PlaylistActions.get({id}));
+            }
+            return successActions;
           }),
           catchError((error: Error) => [
             PlaylistActions.updateFail(error),

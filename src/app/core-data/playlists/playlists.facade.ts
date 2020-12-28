@@ -8,11 +8,13 @@ import {PlaylistsSelectors} from './playlists.selectors';
 export class PlaylistsFacade {
   constructor(private store: Store<State>) {}
 
-  public allPlaylistsEntities$ = this.store.select(PlaylistsSelectors.entities);
-  public keys$ = this.store.select(PlaylistsSelectors.keys);
-  public playlistById$ = this.store.select(PlaylistsSelectors.playlistById);
-  public allPlaylists$ = this.store.select(PlaylistsSelectors.selectAll);
+  public playlistById$ = this.store.select(PlaylistsSelectors.listById);
+  public allPlaylists$ = this.store.select(PlaylistsSelectors.allLists);
+  public totalPlaylists$ = this.store.select(PlaylistsSelectors.totalLists);
+
+  // Selected Playlist
   public playlistInfo$ = this.store.select(PlaylistsSelectors.playlistInfo);
+  public allSongs$ = this.store.select(PlaylistsSelectors.allSongs);
 
   public getAllPlaylists(): void {
     this.store.dispatch(PlaylistActions.getAll());
