@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 
 import {PlaylistActions} from './playlists.actions';
@@ -96,6 +96,26 @@ export class PlaylistsEffects {
               error: error,
             }),
           ]),
+        ),
+      ),
+    ),
+  );
+
+  delete$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlaylistActions.delete),
+      mergeMap(({id}) =>
+        this.playlistService.deletePlaylist(id).pipe(
+          map(res => {
+            if (res['subsonic-response'].$.status !== 'ok') {
+              return PlaylistActions.deleteFail(
+                new Error('Playlist deletion failed'),
+              );
+            }
+
+            return PlaylistActions.deleteSuccess({id});
+          }),
+          catchError((error: Error) => of(PlaylistActions.getFail(error))),
         ),
       ),
     ),

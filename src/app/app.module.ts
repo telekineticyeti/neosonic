@@ -29,7 +29,7 @@ import {UtilityService} from './services/utlity.service';
 import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
 import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscribe.adapter';
 import {PlaylistEditDialogComponent} from './components/dialogs/playlist-edit/playlist-edit.component';
-import { DeleteConfirmationComponent } from './components/dialogs/delete-confirmation/delete-confirmation.component';
+import {DeleteConfirmationDialogComponent} from './components/dialogs/delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ import { DeleteConfirmationComponent } from './components/dialogs/delete-confirm
     ArtistViewerComponent,
     AutoUnsubscribeAdapter,
     PlaylistEditDialogComponent,
-    DeleteConfirmationComponent,
+    DeleteConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

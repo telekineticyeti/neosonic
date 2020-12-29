@@ -27,4 +27,8 @@ export class PlaylistsFacade {
   public updatePlaylist(payload: airsonic.PlaylistUpdateRequest): void {
     this.store.dispatch(PlaylistActions.update({payload}));
   }
+
+  public deletePlaylist(id: string): void {
+    this.store.dispatch(PlaylistActions.delete({id}));
+  }
 }

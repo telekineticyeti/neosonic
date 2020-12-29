@@ -6,6 +6,7 @@ import {RouterFacade} from 'src/app/core-data/router/router.facade';
 import {SongsFacade} from 'src/app/core-data/songs/songs.facade';
 import {AutoUnsubscribeAdapter} from '../../shared/adapters/auto-unsubscribe.adapter';
 import {PlaylistEditDialogComponent} from 'src/app/components/dialogs/playlist-edit/playlist-edit.component';
+import {DeleteConfirmationDialogComponent} from 'src/app/components/dialogs/delete-confirmation/delete-confirmation.component';
 import {take} from 'rxjs/operators';
 
 @Component({
@@ -69,7 +70,28 @@ export class PlaylistViewerComponent
   }
 
   public deletePlaylist(id: string, name: string): void {
-    console.log(id, name);
+    const deleteDialog = new MatDialogConfig();
+
+    const data: airsonicDialogModels.DeleteConfirmData = {
+      title: `Delete ${name}?`,
+    };
+
+    deleteDialog.data = data;
+
+    const dialogRef = this.dialog.open(
+      DeleteConfirmationDialogComponent,
+      deleteDialog,
+    );
+
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe(result => {
+        if (result) {
+          this.playlistsFacade.deletePlaylist(id);
+          this.router.navigateByUrl('/');
+        }
+      });
   }
 
   public editPlaylist(name: string, comment: string): void {

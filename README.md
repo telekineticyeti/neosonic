@@ -24,10 +24,13 @@
 - [ ] Server login & persistance
 - [x] Playlist Details
 - [ ] Playlist Creation
-- [ ] Playlist Editing
+- [x] Playlist Deletion
+- [x] Playlist Editing
 - [ ] Search typeahead
 - [ ] Search Icon / Clear Button
 - [ ] Recent Searches (from persist)
 - [ ] Load Spinner
 - [ ] Keyboard Shortcuts
 - [x] Move songclick logic to utility service to reduce code duplication
+
+Doesn't support multi-user setups.

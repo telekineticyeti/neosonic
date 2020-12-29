@@ -29,11 +29,10 @@ const reducer = createReducer(
       state.selectedPlaylistSongs,
     ),
   })),
-  // on(PlaylistActions.getSuccess, (state, {playlist}) => ({
-  //   ...state,
-  //   selectedPlaylist: playlist,
-  //   selectedPlaylistSongs:
-  // })),
+  on(PlaylistActions.deleteSuccess, (state, {id}) => ({
+    ...state,
+    playlists: playlistAdapter.removeOne(id, state.playlists),
+  })),
 );
 
 export function PlaylistsReducer(

@@ -50,4 +50,10 @@ export class PlaylistsService {
 
     return this.airSonicApi.callApiEndpoint(url);
   }
+
+  public deletePlaylist(id: string): Observable<SubSonicApi.Response> {
+    const url = this.airSonicApi.constructEndpointUrl('deletePlaylist', [{id}])
+      .href;
+    return this.airSonicApi.callApiEndpoint(url);
+  }
 }
