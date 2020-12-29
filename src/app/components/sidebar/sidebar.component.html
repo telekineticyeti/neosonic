@@ -3,7 +3,14 @@
 
   <h3>BROWSE</h3>
   <sidebar-browse> </sidebar-browse>
-  <h3>PLAYLISTS</h3>
+  <div class="playlists-toolbar">
+    <h3>PLAYLISTS</h3>
+    <mat-icon
+      class="add-playlist"
+      svgIcon="add"
+      (click)="createPlaylist()"
+    ></mat-icon>
+  </div>
   <sidebar-playlists
     [playlists]="playlistsFacade.allPlaylists$ | async"
   ></sidebar-playlists>

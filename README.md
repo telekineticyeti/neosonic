@@ -23,7 +23,7 @@
 - [ ] Artist Drag & Drop ?
 - [ ] Server login & persistance
 - [x] Playlist Details
-- [ ] Playlist Creation
+- [x] Playlist Creation
 - [x] Playlist Deletion
 - [x] Playlist Editing
 - [ ] Search typeahead

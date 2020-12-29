@@ -67,5 +67,9 @@ export class MaterialModule {
       'edit',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'),
     );
+    iconRegistry.addSvgIcon(
+      'add',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plus.svg'),
+    );
   }
 }

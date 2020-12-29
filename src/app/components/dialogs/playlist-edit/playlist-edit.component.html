@@ -2,10 +2,16 @@
 <form [formGroup]="form" (submit)="save()">
   <div mat-dialog-content>
     <mat-form-field>
-      <input matInput type="text" formControlName="name" placeholder="Name" />
+      <input
+        #nameInput
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Name"
+      />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="commentEnabled">
       <input
         matInput
         type="text"
@@ -15,7 +21,9 @@
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-button (click)="save()">Save</button>
-    <button mat-button (click)="close()">Close</button>
+    <button mat-button type="submit" (click)="save()" [disabled]="form.invalid">
+      Save
+    </button>
+    <button mat-button type="button" (click)="close()">Close</button>
   </div>
 </form>

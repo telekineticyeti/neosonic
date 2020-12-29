@@ -185,10 +185,11 @@ declare namespace airsonicDialogModels {
     name: string;
     comment?: string;
     title?: string;
+    focusName?: boolean;
+    commentEnabled?: boolean;
   }
 
   interface DeleteConfirmData {
-    // entityName: string;
     title: string;
   }
 }

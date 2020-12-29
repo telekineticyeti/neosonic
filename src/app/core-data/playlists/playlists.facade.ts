@@ -28,6 +28,10 @@ export class PlaylistsFacade {
     this.store.dispatch(PlaylistActions.update({payload}));
   }
 
+  public createPlaylist(name: string, comment?: string): void {
+    this.store.dispatch(PlaylistActions.create({name, comment}));
+  }
+
   public deletePlaylist(id: string): void {
     this.store.dispatch(PlaylistActions.delete({id}));
   }

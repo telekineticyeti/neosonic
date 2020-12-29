@@ -120,4 +120,34 @@ export class PlaylistsEffects {
       ),
     ),
   );
+
+  create$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlaylistActions.create),
+      mergeMap(({name, comment}) =>
+        this.playlistService.createPlaylist(name, comment).pipe(
+          map(res => {
+            if (res['subsonic-response'].$.status !== 'ok') {
+              return PlaylistActions.createFail(
+                new Error('Playlist creation failed'),
+              );
+            }
+
+            return name;
+          }),
+          switchMap(name => {
+            const successActions = [];
+
+            if (typeof name === 'string') {
+              successActions.push(PlaylistActions.createSuccess({name}));
+            }
+
+            successActions.push(PlaylistActions.getAll());
+            return successActions;
+          }),
+          catchError((error: Error) => of(PlaylistActions.getFail(error))),
+        ),
+      ),
+    ),
+  );
 }

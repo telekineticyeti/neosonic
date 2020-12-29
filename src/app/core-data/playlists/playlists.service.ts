@@ -56,4 +56,17 @@ export class PlaylistsService {
       .href;
     return this.airSonicApi.callApiEndpoint(url);
   }
+
+  public createPlaylist(
+    name: string,
+    comment?: string,
+  ): Observable<SubSonicApi.Response> {
+    const params = [];
+    params.push({name});
+    comment && params.push({comment});
+
+    const url = this.airSonicApi.constructEndpointUrl('createPlaylist', params)
+      .href;
+    return this.airSonicApi.callApiEndpoint(url);
+  }
 }

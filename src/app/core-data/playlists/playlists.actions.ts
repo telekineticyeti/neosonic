@@ -38,9 +38,12 @@ export const PlaylistActions = {
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
 
-  // create: createAction(actions.CREATE, props<{id: string}>()),
-  // createSuccess: createAction(actions.CREATE_SUCCESS, props<{id: string}>()),
-  // createFail: createAction(actions.CREATE_FAIL, props<Error>()),
+  create: createAction(
+    actions.CREATE,
+    props<{name: string; comment?: string}>(),
+  ),
+  createSuccess: createAction(actions.CREATE_SUCCESS, props<{name: string}>()),
+  createFail: createAction(actions.CREATE_FAIL, props<Error>()),
 
   delete: createAction(actions.DELETE, props<{id: string}>()),
   deleteSuccess: createAction(actions.DELETE_SUCCESS, props<{id: string}>()),
