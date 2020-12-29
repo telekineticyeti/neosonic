@@ -29,10 +29,11 @@ export class PlaylistsService {
     update: Partial<airsonic.PlaylistUpdateRequest>,
   ): Observable<SubSonicApi.Response> {
     const params = [];
-    update.playlistId && params.push({playlistId: update.playlistId});
-    update.name && params.push({name: update.name});
-    update.public && params.push({public: update.public});
-    update.comment && params.push({public: update.comment});
+    update.hasOwnProperty('playlistId') &&
+      params.push({playlistId: update.playlistId});
+    update.hasOwnProperty('name') && params.push({name: update.name});
+    update.hasOwnProperty('public') && params.push({public: update.public});
+    update.hasOwnProperty('comment') && params.push({comment: update.comment});
 
     if (update.songIdsToAdd) {
       update.songIdsToAdd.forEach(sid => params.push({songIdToAdd: sid}));

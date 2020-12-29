@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form [formGroup]="form" (submit)="save()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput type="text" formControlName="name" placeholder="Name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="comment"
+        placeholder="Comment"
+      />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="save()">Save</button>
+    <button mat-button (click)="close()">Close</button>
+  </div>
+</form>

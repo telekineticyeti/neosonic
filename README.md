@@ -14,17 +14,17 @@
 - [x] Search
 - [ ] Toaster feedbacks
 - [ ] Drag & Drop preview improvements
-- [ ] Playlist removal to trigger reload of songs
+- [x] Playlist removal to trigger reload of songs
 
 # Improvements for later
 
 - [ ] Album Viewer - More by this artist
 - [ ] Context menus for playlist/songs
 - [ ] Artist Drag & Drop ?
-- [ ] Create Playlist Button
 - [ ] Server login & persistance
 - [x] Playlist Details
-- [ ] Playlist Creation/Editing
+- [ ] Playlist Creation
+- [ ] Playlist Editing
 - [ ] Search typeahead
 - [ ] Search Icon / Clear Button
 - [ ] Recent Searches (from persist)

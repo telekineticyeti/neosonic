@@ -12,6 +12,7 @@ import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const materialModules = [
   MatCardModule,
@@ -25,6 +26,7 @@ const materialModules = [
   MatMenuModule,
   MatTooltipModule,
   DragDropModule,
+  MatDialogModule,
 ];
 
 @NgModule({
@@ -52,6 +54,18 @@ export class MaterialModule {
     iconRegistry.addSvgIcon(
       'remove',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/remove.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'menu',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'delete',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'),
+    );
+    iconRegistry.addSvgIcon(
+      'edit',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'),
     );
   }
 }

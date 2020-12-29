@@ -12,10 +12,14 @@
       size="400"
     />
   </div>
-  <pre>{{ (playlistsFacade.playlistInfo$ | async).playlist.coverArt }}</pre>
 
   <div class="info">
-    <h2>{{ (playlistsFacade.playlistInfo$ | async).playlist.name }}</h2>
+    <div class="title">
+      <h2>{{ (playlistsFacade.playlistInfo$ | async).playlist.name }}</h2>
+      <div class="menu" [matMenuTriggerFor]="playlistMenu">
+        <mat-icon svgIcon="menu"></mat-icon>
+      </div>
+    </div>
     <p class="comment">
       {{ (playlistsFacade.playlistInfo$ | async).playlist.comment }}
     </p>
@@ -43,3 +47,22 @@
     (removeClick)="handleRemoveClick($event)"
   ></songs-lister>
 </div>
+
+<mat-menu #playlistMenu="matMenu">
+  <button
+    *ngIf="playlistsFacade.playlistInfo$ | async as p"
+    mat-menu-item
+    (click)="editPlaylist(p.playlist.name, p.playlist.comment)"
+  >
+    <mat-icon svgIcon="edit"></mat-icon>
+    <span>Edit Playlist</span>
+  </button>
+  <button
+    *ngIf="playlistsFacade.playlistInfo$ | async as p"
+    mat-menu-item
+    (click)="deletePlaylist(p.playlist.id, p.playlist.name)"
+  >
+    <mat-icon svgIcon="delete"></mat-icon>
+    <span>Delete Playlist</span>
+  </button>
+</mat-menu>

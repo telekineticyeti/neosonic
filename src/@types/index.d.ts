@@ -179,3 +179,11 @@ declare namespace airsonicEvents {
     songList: airsonic.Song[];
   }
 }
+
+declare namespace airsonicDialogModels {
+  interface PlaylistData {
+    name: string;
+    comment?: string;
+    title?: string;
+  }
+}

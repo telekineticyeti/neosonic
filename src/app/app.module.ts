@@ -28,6 +28,8 @@ import {SongCountPipe} from './pipes/song-count.pipe';
 import {UtilityService} from './services/utlity.service';
 import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
 import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscribe.adapter';
+import {PlaylistEditDialogComponent} from './components/dialogs/playlist-edit/playlist-edit.component';
+import { DeleteConfirmationComponent } from './components/dialogs/delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscr
     SearchComponent,
     ArtistViewerComponent,
     AutoUnsubscribeAdapter,
+    PlaylistEditDialogComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule,

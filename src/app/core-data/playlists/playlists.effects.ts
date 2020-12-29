@@ -73,7 +73,6 @@ export class PlaylistsEffects {
       mergeMap(({payload}) =>
         this.playlistService.updatePlaylist(payload).pipe(
           map(res => {
-            console.log(payload);
             if (res['subsonic-response'].$.status !== 'ok') {
               return PlaylistActions.updateFail(
                 new Error('API Request Failed'),
