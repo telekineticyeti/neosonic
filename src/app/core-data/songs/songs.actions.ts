@@ -22,7 +22,7 @@ export const SongActions = {
   get: createAction(actions.GET),
   getSuccess: createAction(
     actions.GET_SUCCESS,
-    props<{songs: airsonic.Song[]}>(),
+    props<{songs: neosonic.Song[]}>(),
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
   deleteAll: createAction(actions.DELETEALL),
@@ -39,10 +39,10 @@ export const SongActions = {
 
   updateOne: createAction(
     actions.UPDATE_ONE,
-    props<{update: Update<airsonic.Song>}>(),
+    props<{update: Update<neosonic.Song>}>(),
   ),
   updateMany: createAction(
     actions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Song>[]}>(),
+    props<{updates: Update<neosonic.Song>[]}>(),
   ),
 };

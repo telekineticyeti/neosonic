@@ -14,11 +14,11 @@ export class PlaylistsComponent {
     private playlistsFacade: PlaylistsFacade,
   ) {}
 
-  @Input() playlists: airsonic.Playlist[];
+  @Input() playlists: neosonic.Playlist[];
 
   public drop(
-    event: CdkDragDrop<airsonic.Song[]>,
-    playlist: airsonic.Playlist,
+    event: CdkDragDrop<neosonic.Song[]>,
+    playlist: neosonic.Playlist,
   ): void {
     const droppedItem = event.previousContainer.data[event.previousIndex];
     const songsToAdd = event.previousContainer.data.filter(s => s.selected);

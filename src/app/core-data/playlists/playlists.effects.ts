@@ -22,7 +22,7 @@ export class PlaylistsEffects {
           map(res => {
             const payload = res['subsonic-response'].playlists[0];
 
-            const playlists: airsonic.Playlist[] = payload.playlist.map(
+            const playlists: neosonic.Playlist[] = payload.playlist.map(
               playlist => playlist.$,
             );
 
@@ -48,7 +48,7 @@ export class PlaylistsEffects {
           map(res => {
             const payload = res['subsonic-response'].playlist[0];
 
-            const playlist: airsonic.PlaylistDetails = {
+            const playlist: neosonic.PlaylistDetails = {
               playlist: payload.$,
               songs: payload.entry ? payload.entry.map(s => s.$) : [],
             };

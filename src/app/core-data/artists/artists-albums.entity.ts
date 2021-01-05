@@ -1,12 +1,12 @@
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 
-export const albumAdapter: EntityAdapter<airsonic.Album> = createEntityAdapter<airsonic.Album>(
+export const albumAdapter: EntityAdapter<neosonic.Album> = createEntityAdapter<neosonic.Album>(
   {
-    selectId: (album: airsonic.Album): string => album.id,
+    selectId: (album: neosonic.Album): string => album.id,
   },
 );
 
-export interface IArtistAlbumsState extends EntityState<airsonic.Album> {
+export interface IArtistAlbumsState extends EntityState<neosonic.Album> {
   selectedId: string | null;
 }
 

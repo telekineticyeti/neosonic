@@ -20,7 +20,7 @@ export const AlbumActions = {
   get: createAction(actions.GET, props<{id: string}>()),
   getSuccess: createAction(
     actions.GET_SUCCESS,
-    props<{album: airsonic.AlbumDetails}>(),
+    props<{album: neosonic.AlbumDetails}>(),
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
 
@@ -29,13 +29,13 @@ export const AlbumActions = {
   getList: createAction(
     actions.GET_LIST,
     props<{
-      albumType: airsonic.getAlbumTypes;
-      options: airsonic.getAlbumOptions;
+      albumType: neosonic.getAlbumTypes;
+      options: neosonic.getAlbumOptions;
     }>(),
   ),
   getListSuccess: createAction(
     actions.GET_LIST_SUCCESS,
-    props<{albums: airsonic.Album[]}>(),
+    props<{albums: neosonic.Album[]}>(),
   ),
   getListFail: createAction(actions.GET_LIST_FAIL, props<Error>()),
 
@@ -43,10 +43,10 @@ export const AlbumActions = {
 
   updateOne: createAction(
     actions.UPDATE_ONE,
-    props<{update: Update<airsonic.Album>}>(),
+    props<{update: Update<neosonic.Album>}>(),
   ),
   updateMany: createAction(
     actions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Album>[]}>(),
+    props<{updates: Update<neosonic.Album>[]}>(),
   ),
 };

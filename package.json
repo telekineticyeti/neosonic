@@ -1,5 +1,5 @@
 {
-  "name": "airsonic-client",
+  "name": "neosonic",
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",

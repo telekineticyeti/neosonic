@@ -26,7 +26,7 @@ export class PlaylistsService {
 
   // http://www.subsonic.org/pages/api.jsp#updatePlaylist
   public updatePlaylist(
-    update: Partial<airsonic.PlaylistUpdateRequest>,
+    update: Partial<neosonic.PlaylistUpdateRequest>,
   ): Observable<SubSonicApi.Response> {
     const params = [];
     update.hasOwnProperty('playlistId') &&

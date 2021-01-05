@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./albums-lister.component.scss'],
 })
 export class AlbumsListerComponent {
-  @Input() public albums: airsonic.Album[];
+  @Input() public albums: neosonic.Album[];
   @Output() public artistClick = new EventEmitter<airsonicEvents.ArtistClick>();
   @Output() public albumClick = new EventEmitter<airsonicEvents.AlbumClick>();
 

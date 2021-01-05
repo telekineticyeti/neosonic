@@ -16,8 +16,8 @@ export class AlbumsService {
    * @returns XML list of albums. Uses the /getAlbumList2 subsonic API endpoint
    */
   public getAlbumsList(
-    type: airsonic.getAlbumTypes,
-    options?: airsonic.getAlbumOptions,
+    type: neosonic.getAlbumTypes,
+    options?: neosonic.getAlbumOptions,
   ): Observable<SubSonicApi.Response> {
     const params = [];
 

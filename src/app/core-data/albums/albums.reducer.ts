@@ -2,15 +2,15 @@ import {Action, createReducer, on} from '@ngrx/store';
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 import {AlbumActions} from './albums.actions';
 
-export const adapter: EntityAdapter<airsonic.Album> = createEntityAdapter<airsonic.Album>(
+export const adapter: EntityAdapter<neosonic.Album> = createEntityAdapter<neosonic.Album>(
   {
-    selectId: (album: airsonic.Album): string => album.id,
+    selectId: (album: neosonic.Album): string => album.id,
   },
 );
 
-export interface IAlbumsState extends EntityState<airsonic.Album> {
+export interface IAlbumsState extends EntityState<neosonic.Album> {
   selectedId: string | null;
-  albumDetails?: airsonic.AlbumDetails;
+  albumDetails?: neosonic.AlbumDetails;
 }
 
 const initialState: IAlbumsState = adapter.getInitialState({

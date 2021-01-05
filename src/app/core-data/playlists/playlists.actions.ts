@@ -26,7 +26,7 @@ export const PlaylistActions = {
   getAll: createAction(actions.GETALL),
   getAllSuccess: createAction(
     actions.GETALL_SUCCESS,
-    props<{playlists: airsonic.Playlist[]}>(),
+    props<{playlists: neosonic.Playlist[]}>(),
   ),
   getAllFail: createAction(actions.GETALL_FAIL, props<Error>()),
 
@@ -34,7 +34,7 @@ export const PlaylistActions = {
   get: createAction(actions.GET, props<{id: string}>()),
   getSuccess: createAction(
     actions.GET_SUCCESS,
-    props<{playlist: airsonic.PlaylistDetails}>(),
+    props<{playlist: neosonic.PlaylistDetails}>(),
   ),
   getFail: createAction(actions.GET_FAIL, props<Error>()),
 
@@ -51,7 +51,7 @@ export const PlaylistActions = {
 
   update: createAction(
     actions.UPDATE,
-    props<{payload: Partial<airsonic.PlaylistUpdateRequest>}>(),
+    props<{payload: Partial<neosonic.PlaylistUpdateRequest>}>(),
   ),
   updateSuccess: createAction(actions.UPDATE_SUCCESS),
   updateFail: createAction(actions.UPDATE_FAIL, props<Error>()),

@@ -22,7 +22,7 @@ export class AlbumViewerComponent
     super();
   }
 
-  public albumDetails?: airsonic.AlbumDetails;
+  public albumDetails?: neosonic.AlbumDetails;
 
   public ngOnInit(): void {
     const albumId$ = this.routerFacade.params$.subscribe(p => {

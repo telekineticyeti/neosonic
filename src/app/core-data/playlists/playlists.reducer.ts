@@ -5,7 +5,7 @@ import {IPlaylistListsState, playlistAdapter} from './playlists-lists.entity';
 import {IPlaylistSongsState, songAdapter} from './playlists-songs.entity';
 
 export interface IPlaylistsState {
-  selectedPlaylist?: airsonic.PlaylistDetails;
+  selectedPlaylist?: neosonic.PlaylistDetails;
   selectedPlaylistSongs: IPlaylistSongsState;
   playlists: IPlaylistListsState;
 }

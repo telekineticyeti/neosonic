@@ -5,14 +5,14 @@ import {Update} from '@ngrx/entity';
 export class UtilityService {
   public songSelect(
     selectAction: airsonicEvents.SongClick,
-  ): Update<airsonic.Song>[] {
+  ): Update<neosonic.Song>[] {
     const clickedSong = selectAction.song;
     const songList = selectAction.songList;
     const isShiftPressed = selectAction.event.shiftKey;
     const isCtrlPressed = selectAction.event.ctrlKey;
     const isNoModifierPressed = !isCtrlPressed && !isShiftPressed;
 
-    let selectedSongsUpdate: Update<airsonic.Song>[];
+    let selectedSongsUpdate: Update<neosonic.Song>[];
 
     // IF no modifier is pressed
     // THEN deselect all currently selected

@@ -2,13 +2,13 @@ import {Action, createReducer, on} from '@ngrx/store';
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 import {SongActions} from './songs.actions';
 
-export const adapter: EntityAdapter<airsonic.Song> = createEntityAdapter<airsonic.Song>(
+export const adapter: EntityAdapter<neosonic.Song> = createEntityAdapter<neosonic.Song>(
   {
-    selectId: (song: airsonic.Song): string => song.id,
+    selectId: (song: neosonic.Song): string => song.id,
   },
 );
 
-export interface ISongsState extends EntityState<airsonic.Song> {
+export interface ISongsState extends EntityState<neosonic.Song> {
   selectedId: string | null;
 }
 

@@ -31,9 +31,9 @@ export const SearchActions = {
   querySuccess: createAction(
     searchActions.QUERY_SUCCESS,
     props<{
-      songs: airsonic.Song[];
-      albums: airsonic.Album[];
-      artists: airsonic.Artist[];
+      songs: neosonic.Song[];
+      albums: neosonic.Album[];
+      artists: neosonic.Artist[];
     }>(),
   ),
   queryFail: createAction(searchActions.QUERY_FAIL, props<Error>()),
@@ -55,32 +55,32 @@ export const SearchSongActions = {
   ),
   updateOne: createAction(
     songActions.UPDATE_ONE,
-    props<{update: Update<airsonic.Song>}>(),
+    props<{update: Update<neosonic.Song>}>(),
   ),
   updateMany: createAction(
     songActions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Song>[]}>(),
+    props<{updates: Update<neosonic.Song>[]}>(),
   ),
 };
 
 export const SearchAlbumActions = {
   updateOne: createAction(
     albumActions.UPDATE_ONE,
-    props<{update: Update<airsonic.Album>}>(),
+    props<{update: Update<neosonic.Album>}>(),
   ),
   updateMany: createAction(
     albumActions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Album>[]}>(),
+    props<{updates: Update<neosonic.Album>[]}>(),
   ),
 };
 
 export const SearchArtistActions = {
   updateOne: createAction(
     artistActions.UPDATE_ONE,
-    props<{update: Update<airsonic.Artist>}>(),
+    props<{update: Update<neosonic.Artist>}>(),
   ),
   updateMany: createAction(
     artistActions.UPDATE_MANY,
-    props<{updates: Update<airsonic.Artist>[]}>(),
+    props<{updates: Update<neosonic.Artist>[]}>(),
   ),
 };

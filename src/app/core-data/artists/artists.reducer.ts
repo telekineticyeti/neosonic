@@ -3,8 +3,8 @@ import {ArtistActions} from './artists.actions';
 import {albumAdapter, IArtistAlbumsState} from './artists-albums.entity';
 
 export interface IArtistState {
-  selected?: airsonic.Artist;
-  info?: airsonic.ArtistInfo;
+  selected?: neosonic.Artist;
+  info?: neosonic.ArtistInfo;
   albums: IArtistAlbumsState;
   // artistTopSongs?
 }

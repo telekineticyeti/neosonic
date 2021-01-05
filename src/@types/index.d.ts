@@ -1,4 +1,4 @@
-declare namespace airsonic {
+declare namespace neosonic {
   /**
    * Generic interface for playlist objects
    */
@@ -158,8 +158,8 @@ declare namespace airsonicEvents {
   }
 
   export interface SongClick extends ItemClick {
-    song: airsonic.Song;
-    songList?: airsonic.Song[];
+    song: neosonic.Song;
+    songList?: neosonic.Song[];
   }
 
   export interface AlbumClick extends ItemClick {
@@ -171,12 +171,12 @@ declare namespace airsonicEvents {
   }
 
   export interface FavouriteClick extends ItemClick {
-    song: airsonic.Song;
+    song: neosonic.Song;
   }
 
   export interface RemoveClick extends ItemClick {
-    song: airsonic.Song;
-    songList: airsonic.Song[];
+    song: neosonic.Song;
+    songList: neosonic.Song[];
   }
 }
 

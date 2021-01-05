@@ -14,13 +14,13 @@ export const ArtistActions = {
   get: createAction(artistActions.GET, props<{id: string}>()),
   getSuccess: createAction(
     artistActions.GET_SUCCESS,
-    props<{artist: airsonic.Artist; albums: airsonic.Album[]}>(),
+    props<{artist: neosonic.Artist; albums: neosonic.Album[]}>(),
   ),
   getFail: createAction(artistActions.GET_FAIL, props<Error>()),
   getInfo: createAction(artistActions.GETINFO, props<{id: string}>()),
   getInfoSuccess: createAction(
     artistActions.GETINFO_SUCCESS,
-    props<{info: airsonic.ArtistInfo}>(),
+    props<{info: neosonic.ArtistInfo}>(),
   ),
   getInfoFail: createAction(artistActions.GETINFO_FAIL, props<Error>()),
   clear: createAction(artistActions.CLEAR),

@@ -18,8 +18,8 @@ export class AlbumsFacade {
   public songs$ = this.store.select(SongSelectors.all);
 
   public getAlbumList(
-    albumType: airsonic.getAlbumTypes,
-    options?: airsonic.getAlbumOptions,
+    albumType: neosonic.getAlbumTypes,
+    options?: neosonic.getAlbumOptions,
   ): void {
     this.store.dispatch(AlbumActions.getList({albumType, options}));
   }

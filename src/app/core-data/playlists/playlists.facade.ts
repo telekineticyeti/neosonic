@@ -24,7 +24,7 @@ export class PlaylistsFacade {
     this.store.dispatch(PlaylistActions.get({id}));
   }
 
-  public updatePlaylist(payload: airsonic.PlaylistUpdateRequest): void {
+  public updatePlaylist(payload: neosonic.PlaylistUpdateRequest): void {
     this.store.dispatch(PlaylistActions.update({payload}));
   }
 

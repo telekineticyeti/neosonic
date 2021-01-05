@@ -1,12 +1,12 @@
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 
-export const playlistAdapter: EntityAdapter<airsonic.Playlist> = createEntityAdapter<airsonic.Playlist>(
+export const playlistAdapter: EntityAdapter<neosonic.Playlist> = createEntityAdapter<neosonic.Playlist>(
   {
-    selectId: (song: airsonic.Playlist): string => song.id,
+    selectId: (song: neosonic.Playlist): string => song.id,
   },
 );
 
-export interface IPlaylistListsState extends EntityState<airsonic.Playlist> {
+export interface IPlaylistListsState extends EntityState<neosonic.Playlist> {
   selectedId: string | null;
 }
 
