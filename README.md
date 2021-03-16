@@ -2,14 +2,6 @@
 
 A playlist-first organization tool that provides a clean, functional UI for maintaining playlists on music servers that support the [subsonic API](http://www.subsonic.org/), such as Airsonic, Subsonic and Funkwhale.
 
-## What it is not
-
-NeoSonic is not a music player or music uploading tool. For the time being, it is purely a playlist organization tool for music that already exists in your hosted library.
-
-This may change in the future, but for now please consider this an additional tool to compliment your self-hosted cloud music toolbox.
-
-NeoSonic currently does not support multi-user setups, and is intended for use on servers that are used by a single user.
-
 ## Why this tool was made
 
 Playlist management in Airsonic, Subsonic & Funkwhale is cumbersome. Adding or removing tracks to existing playlists is clunky and more time consuming than it should be.
@@ -18,7 +10,15 @@ There are several alternative frontend UI's available to interact with these API
 
 NeoSonic aims to fill this void with a playlist management UI that is familiar to those found in commercial cloud music applications.
 
-## Features &
+## What it is not
+
+NeoSonic is not a music player or music uploading tool. For the time being, it is purely a playlist organization tool for music that already exists in your hosted library.
+
+This may change in the future, but for now please consider this an additional tool to compliment your self-hosted cloud music toolbox.
+
+NeoSonic currently does not support multi-user setups, and is intended for use on servers that are used by a single user.
+
+## Features
 
 - Multi-song selection using CTRL/CMD, Shift modifiers
 - Drag and drop songs to sidebar playlists list
@@ -29,7 +29,7 @@ NeoSonic is written in Angular, NgRx and Angular Material. It has been developed
 
 NeoSonic is still under development but offers the basic functionality stated above. Here is a running list of features that have been/will be implemented.
 
-# Done
+### Done
 
 - [x] Router state + serializer
 - [x] Material Icons
@@ -46,7 +46,7 @@ NeoSonic is still under development but offers the basic functionality stated ab
 - [x] Search
 - [x] Move songclick logic to utility service to reduce code duplication
 
-# TODO
+### TODO
 
 - [ ] Toaster feedbacks
 - [ ] Album Browser by Type

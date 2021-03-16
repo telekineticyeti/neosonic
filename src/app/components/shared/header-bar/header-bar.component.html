@@ -1,4 +1,27 @@
 <mat-toolbar color="primary">
   <mat-icon svgIcon="headphones"></mat-icon>
   <h1 class="app-title">NeoSonic</h1>
+
+  <button mat-icon-button [mat-menu-trigger-for]="menu" class="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
 </mat-toolbar>
+
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item (click)="loginDialog()">
+    <mat-icon aria-hidden="false">login</mat-icon>
+    Login
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon aria-hidden="false">logout</mat-icon>
+    Logout
+  </button>
+  <button mat-menu-item (click)="navigateGithub()">
+    <mat-icon
+      svgIcon="github"
+      aria-hidden="false"
+      aria-label="Github"
+    ></mat-icon>
+    Github
+  </button>
+</mat-menu>

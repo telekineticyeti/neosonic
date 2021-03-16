@@ -71,5 +71,9 @@ export class MaterialModule {
       'add',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plus.svg'),
     );
+    iconRegistry.addSvgIcon(
+      'github',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/github.svg'),
+    );
   }
 }

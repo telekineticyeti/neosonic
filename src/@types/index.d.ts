@@ -192,4 +192,10 @@ declare namespace airsonicDialogModels {
   interface DeleteConfirmData {
     title: string;
   }
+
+  interface LoginData {
+    username: string;
+    password: string;
+    server: string;
+  }
 }

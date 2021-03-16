@@ -30,6 +30,7 @@ import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.c
 import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscribe.adapter';
 import {PlaylistEditDialogComponent} from './components/dialogs/playlist-edit/playlist-edit.component';
 import {DeleteConfirmationDialogComponent} from './components/dialogs/delete-confirmation/delete-confirmation.component';
+import {LoginDialogComponent} from './components/dialogs/login/dialog-login.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {DeleteConfirmationDialogComponent} from './components/dialogs/delete-con
     AutoUnsubscribeAdapter,
     PlaylistEditDialogComponent,
     DeleteConfirmationDialogComponent,
+    LoginDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Login</h1>
+<form [formGroup]="form" (submit)="save()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="username"
+        placeholder="Username"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="server"
+        placeholder="Server Address"
+      />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        type="submit"
+        (click)="save()"
+        [disabled]="form.invalid"
+      >
+        Save
+      </button>
+      <button mat-button type="button" (click)="close()">Close</button>
+    </div>
+  </div>
+</form>
