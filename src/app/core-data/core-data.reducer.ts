@@ -7,6 +7,8 @@ import {IRouterState} from './router/router.reducer';
 import {ISearchState, SearchReducer} from './search/search.reducer';
 import {ISongsState, SongsReducer} from './songs/songs.reducer';
 import {ArtistReducer, IArtistState} from './artists/artists.reducer';
+import {IUserState} from './user/user.reducer';
+import {UserReducer} from './user/user.reducer';
 
 export interface State {
   playlists: IPlaylistsState;
@@ -14,6 +16,7 @@ export interface State {
   albums: IAlbumsState;
   artist: IArtistState;
   search: ISearchState;
+  user: IUserState;
   router: RouterReducerState<IRouterState>;
 }
 
@@ -23,6 +26,7 @@ export const reducers: ActionReducerMap<State> = {
   albums: AlbumsReducer,
   artist: ArtistReducer,
   search: SearchReducer,
+  user: UserReducer,
   router: routerReducer,
 };
 

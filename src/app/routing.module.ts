@@ -6,27 +6,33 @@ import {SearchComponent} from './components/search/search.component';
 import {AlbumViewerComponent} from './components/viewers/album/album-viewer.component';
 import {ArtistViewerComponent} from './components/viewers/artist/artist-viewer.component';
 import {PlaylistViewerComponent} from './components/viewers/playlist/playlist-viewer.component';
+import {UserGuardService} from './services/guards/user-guard.service';
 
 const routes: Routes = [
   {
     path: 'playlists/:playlistId',
     component: PlaylistViewerComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'albums',
     component: AlbumsComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'album/:albumId',
     component: AlbumViewerComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'artist/:artistId',
     component: ArtistViewerComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'search/:query',
     component: SearchComponent,
+    canActivate: [UserGuardService],
   },
 ];
 

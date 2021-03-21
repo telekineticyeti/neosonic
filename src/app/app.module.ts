@@ -31,6 +31,8 @@ import {AutoUnsubscribeAdapter} from './components/shared/adapters/auto-unsubscr
 import {PlaylistEditDialogComponent} from './components/dialogs/playlist-edit/playlist-edit.component';
 import {DeleteConfirmationDialogComponent} from './components/dialogs/delete-confirmation/delete-confirmation.component';
 import {LoginDialogComponent} from './components/dialogs/login/dialog-login.component';
+import {DialogService} from './services/dialog.service';
+import {UserGuardService} from './services/guards/user-guard.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,6 @@ import {LoginDialogComponent} from './components/dialogs/login/dialog-login.comp
     CoreDataModule,
   ],
   bootstrap: [AppComponent],
-  providers: [UtilityService],
+  providers: [UtilityService, DialogService, UserGuardService],
 })
 export class AppModule {}

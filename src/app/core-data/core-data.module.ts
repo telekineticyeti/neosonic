@@ -22,6 +22,9 @@ import {SearchFacade} from './search/search.facade';
 import {ArtistsFacade} from './artists/artists.facade';
 import {ArtistService} from './artists/artists.service';
 import {ArtistEffects} from './artists/artists.effects';
+import {PersistService} from '../services/persist.service';
+import {UserEffects} from './user/user.effects';
+import {UserFacade} from './user/user.facade';
 
 @NgModule({
   imports: [
@@ -39,6 +42,7 @@ import {ArtistEffects} from './artists/artists.effects';
       AlbumEffects,
       SearchEffects,
       ArtistEffects,
+      UserEffects,
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
@@ -53,6 +57,8 @@ import {ArtistEffects} from './artists/artists.effects';
     SearchFacade,
     ArtistsFacade,
     ArtistService,
+    PersistService,
+    UserFacade,
     {provide: RouterStateSerializer, useClass: RouterSerializer},
   ],
 })

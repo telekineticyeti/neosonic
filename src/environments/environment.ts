@@ -1,13 +1,10 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
-import { devCredentials } from './credentials';
-import { environmentCommon } from './environment.common';
+import {environmentCommon} from './environment.common';
 
 export const environment = {
   production: false,
-  ...(devCredentials as ICredentials),
   ...environmentCommon,
 };
 
@@ -18,9 +15,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-export interface ICredentials {
-  airsonic_server: string;
-  airsonic_username: string;
-  airsonic_password: string;
-}
+// import 'zone.js/dist/zone-error'; // Included with Angular CLI.

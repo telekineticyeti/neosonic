@@ -5,15 +5,16 @@ import {Md5} from 'ts-md5/dist/md5';
 import {parseString} from 'xml2js';
 import {map, catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
+import {UserFacade} from '../core-data/user/user.facade';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AirsonicApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userFacade: UserFacade) {}
 
-  get apiServer(): string {
-    return this.env.airsonic_server;
+  get credentials(): neosonic.Persist['user'] {
+    return this.userFacade.user$.getValue();
   }
 
   public env = env;
@@ -53,9 +54,10 @@ export class AirsonicApiService {
    * @returns string of parameters required for API calls
    */
   public apiAuthStr(): string {
+    if (!this.userFacade.loggedIn$.getValue()) return;
     const salt = this.createSaltStr(6);
-    const hash = Md5.hashStr(env.airsonic_password + salt);
-    return `?u=${env.airsonic_username}&t=${hash}&s=${salt}&c=${env.appName}&v=${env.airsonicApiVersion}`;
+    const hash = Md5.hashStr(this.credentials.password + salt);
+    return `?u=${this.credentials.username}&t=${hash}&s=${salt}&c=${env.appName}&v=${env.airsonicApiVersion}`;
   }
 
   public constructEndpointUrl(
@@ -65,7 +67,7 @@ export class AirsonicApiService {
     }[],
   ): URL {
     const url = new URL(
-      `${this.apiServer}/rest/${endpoint}${this.apiAuthStr()}`,
+      `${this.credentials.server}/rest/${endpoint}${this.apiAuthStr()}`,
     );
 
     params.forEach(p =>

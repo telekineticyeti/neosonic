@@ -14,9 +14,9 @@ export class LoginDialogComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
-    private dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data: airsonicDialogModels.LoginData,
     private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
   ) {
     this.username = data.username;
     this.password = data.password;

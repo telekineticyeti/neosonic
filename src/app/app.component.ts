@@ -1,6 +1,9 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {skipWhile, take} from 'rxjs/operators';
+import {DialogService} from './services/dialog.service';
 import {PlaylistsFacade} from './core-data/playlists/playlists.facade';
+import {UserFacade} from './core-data/user/user.facade';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +13,28 @@ import {PlaylistsFacade} from './core-data/playlists/playlists.facade';
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private playlistsFacade: PlaylistsFacade,
+    private dialogService: DialogService,
+    public userFacade: UserFacade,
     private router: Router,
   ) {}
 
   public ngOnInit(): void {
-    // TODO Add to eventual initializer
-    this.playlistsFacade.getAllPlaylists();
+    this.userFacade.loggedIn$.pipe(skipWhile(value => !value)).subscribe(_ => {
+      this.playlistsFacade.getAllPlaylists();
+    });
+
+    if (!this.userFacade.loggedIn$.getValue()) {
+      const logindDialogRef = this.dialogService.loginDialog(true);
+
+      logindDialogRef
+        .afterClosed()
+        .pipe(take(1))
+        .subscribe((user: neosonic.Persist['user'] | undefined) => {
+          if (user) {
+            this.userFacade.save(user);
+          }
+        });
+    }
   }
 
   public ngAfterViewInit(): void {

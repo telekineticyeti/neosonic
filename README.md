@@ -45,6 +45,7 @@ NeoSonic is still under development but offers the basic functionality stated ab
 - [x] Artist Viewer
 - [x] Search
 - [x] Move songclick logic to utility service to reduce code duplication
+- [x] Server login & persistance
 
 ### TODO
 
@@ -55,7 +56,6 @@ NeoSonic is still under development but offers the basic functionality stated ab
 - [ ] Drag & Drop preview improvements
 - [ ] Album Viewer - More by this artist
 - [ ] Context menus for playlist/songs
-- [ ] Server login & persistance
 - [ ] Search typeahead
 - [ ] Search Icon / Clear Button
 - [ ] Recent Searches (from persist)

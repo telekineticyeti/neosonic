@@ -8,11 +8,15 @@
 </mat-toolbar>
 
 <mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item (click)="loginDialog()">
+  <button
+    mat-menu-item
+    (click)="loginDialog()"
+    *ngIf="!(userFacade.loggedIn$ | async)"
+  >
     <mat-icon aria-hidden="false">login</mat-icon>
     Login
   </button>
-  <button mat-menu-item (click)="logout()">
+  <button mat-menu-item (click)="logout()" *ngIf="userFacade.loggedIn$ | async">
     <mat-icon aria-hidden="false">logout</mat-icon>
     Logout
   </button>

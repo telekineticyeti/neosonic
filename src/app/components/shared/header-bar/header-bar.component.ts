@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {take} from 'rxjs/operators';
-import {LoginDialogComponent} from '../../dialogs/login/dialog-login.component';
+import {UserFacade} from '../../../core-data/user/user.facade';
+import {DialogService} from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'header-bar',
@@ -9,38 +9,29 @@ import {LoginDialogComponent} from '../../dialogs/login/dialog-login.component';
   styleUrls: ['./header-bar.component.scss'],
 })
 export class HeaderBarComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialogService: DialogService,
+    public userFacade: UserFacade,
+  ) {}
 
   public loginDialog(): void {
-    const loginDialog = new MatDialogConfig();
+    const logindDialogRef = this.dialogService.loginDialog();
 
-    const data: airsonicDialogModels.LoginData = {
-      username: null,
-      password: null,
-      server: null,
-    };
-
-    loginDialog.data = data;
-    loginDialog.minWidth = 400;
-
-    const dialogRef = this.dialog.open(LoginDialogComponent, loginDialog);
-
-    dialogRef
+    logindDialogRef
       .afterClosed()
       .pipe(take(1))
-      .subscribe(result => {
-        if (result) {
-          console.log(result);
-          // this.playlistsFacade.createPlaylist(result.name);
+      .subscribe((user: neosonic.Persist['user'] | undefined) => {
+        if (user) {
+          this.userFacade.save(user);
         }
       });
   }
 
   public logout(): void {
-    console.log('logout');
+    this.userFacade.clear();
   }
 
   public navigateGithub(): void {
-    console.log('github');
+    window.open('tba', '_blank');
   }
 }

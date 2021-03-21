@@ -150,6 +150,14 @@ declare namespace neosonic {
     songIdsToAdd?: string[];
     songIndexesToRemove?: string[];
   }
+
+  export interface Persist {
+    user?: {
+      username: string;
+      password: string;
+      server: string;
+    };
+  }
 }
 
 declare namespace airsonicEvents {
@@ -194,8 +202,8 @@ declare namespace airsonicDialogModels {
   }
 
   interface LoginData {
-    username: string;
-    password: string;
-    server: string;
+    username: string | null;
+    password: string | null;
+    server: string | null;
   }
 }

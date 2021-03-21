@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ArtistsFacade} from 'src/app/core-data/artists/artists.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
+import {UserFacade} from 'src/app/core-data/user/user.facade';
 import {AutoUnsubscribeAdapter} from '../../shared/adapters/auto-unsubscribe.adapter';
 
 @Component({
@@ -15,18 +16,21 @@ export class ArtistViewerComponent
   constructor(
     public artistFacade: ArtistsFacade,
     public routerFacade: RouterFacade,
+    private userFacade: UserFacade,
     private router: Router,
   ) {
     super();
   }
 
   public ngOnInit(): void {
-    const artistId$ = this.routerFacade.params$.subscribe(p => {
-      if (!p.artistId) return;
-      this.artistFacade.getArtist(p.artistId);
-    });
+    if (this.userFacade.loggedIn$.getValue()) {
+      const artistId$ = this.routerFacade.params$.subscribe(p => {
+        if (!p.artistId) return;
+        this.artistFacade.getArtist(p.artistId);
+      });
 
-    this.subscribers.push(artistId$);
+      this.subscribers.push(artistId$);
+    }
   }
 
   public ngOnDestroy(): void {

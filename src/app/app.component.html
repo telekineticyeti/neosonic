@@ -1,5 +1,7 @@
 <header-bar></header-bar>
 <div class="content" cdkDropListGroup>
-  <sidebar></sidebar>
-  <router-outlet class="outlet"></router-outlet>
+  <ng-container *ngIf="userFacade.loggedIn$ | async">
+    <sidebar></sidebar>
+    <router-outlet class="outlet"></router-outlet>
+  </ng-container>
 </div>

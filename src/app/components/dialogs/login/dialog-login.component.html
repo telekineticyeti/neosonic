@@ -37,7 +37,14 @@
       >
         Save
       </button>
-      <button mat-button type="button" (click)="close()">Close</button>
+      <button
+        *ngIf="!dialogRef.disableClose"
+        mat-button
+        type="button"
+        (click)="close()"
+      >
+        Close
+      </button>
     </div>
   </div>
 </form>
