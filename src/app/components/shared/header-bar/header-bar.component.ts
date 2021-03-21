@@ -32,6 +32,6 @@ export class HeaderBarComponent {
   }
 
   public navigateGithub(): void {
-    window.open('tba', '_blank');
+    window.open('https://github.com/telekineticyeti/neosonic', '_blank');
   }
 }
