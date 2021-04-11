@@ -29,6 +29,22 @@ NeoSonic is written in Angular, NgRx and Angular Material. It has been developed
 
 NeoSonic is still under development but offers the basic functionality stated above. Here is a running list of features that have been/will be implemented.
 
+```sh
+# Install dependencies
+npm i
+
+# Start local development sever. Will watch source directory and recompile app on changes
+npm run start
+
+# Compile production build for deployment
+npm run build
+
+# Compile production build for hosting on github pages
+npm run deploy
+```
+
+## Tasks
+
 ### Done
 
 - [x] Router state + serializer

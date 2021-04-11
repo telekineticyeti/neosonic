@@ -7,7 +7,7 @@ export interface IUserState {
     password: string;
     server: string;
   };
-  loggedIn: boolean;
+  loggedIn?: boolean;
 }
 
 export const initialState: IUserState = {
@@ -16,7 +16,6 @@ export const initialState: IUserState = {
     password: '',
     server: '',
   },
-  loggedIn: false,
 };
 
 const userReducer = createReducer(
@@ -28,6 +27,10 @@ const userReducer = createReducer(
 
   on(UserActions.loadSuccess, (state, {user}) => {
     return {...state, user, loggedIn: true};
+  }),
+
+  on(UserActions.loadFail, state => {
+    return {...state, loggedIn: false};
   }),
 
   on(UserActions.clearSuccess, state => {
