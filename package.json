@@ -33,6 +33,7 @@
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "rxjs": "~6.5.4",
+    "sass-mq": "^5.0.1",
     "stream": "^0.0.2",
     "timers": "^0.1.1",
     "ts-md5": "^1.2.7",

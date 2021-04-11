@@ -1,20 +1,34 @@
 @import '~src/styles/variables';
 @import '~src/styles/extenders';
+@import '~src/styles/mq';
 
 .albums-lister {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 20px;
+  margin: 0 -20px;
 
   mat-card {
-    flex: 0 0 23.2%;
+    min-width: 100%;
+    flex: 0 0;
     padding: 0;
-    min-width: 0;
     cursor: pointer;
-    background: #4d4d4d;
     background: none;
     box-shadow: none;
+    padding: 0 20px 20px;
+    flex-shrink: 0;
+    @include mq($from: mobile) {
+      min-width: 50%;
+    }
+    @include mq($from: tablet) {
+      min-width: 33.333%;
+    }
+    @include mq($from: desktop) {
+      min-width: 25%;
+    }
+    @include mq($from: wide) {
+      min-width: 16.6666%;
+    }
 
     .art {
       @extend %cover-art-style;
