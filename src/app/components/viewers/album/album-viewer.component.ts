@@ -14,7 +14,7 @@ export class AlbumViewerComponent
   extends AutoUnsubscribeAdapter
   implements OnInit, OnDestroy {
   constructor(
-    public albumFacade: AlbumsFacade,
+    public albumsFacade: AlbumsFacade,
     public songsFacade: SongsFacade,
     private routerFacade: RouterFacade,
     private router: Router,
@@ -25,21 +25,23 @@ export class AlbumViewerComponent
   public albumDetails?: neosonic.AlbumDetails;
 
   public ngOnInit(): void {
-    const albumId$ = this.routerFacade.params$.subscribe(p => {
-      if (!p.albumId) return;
-      this.albumFacade.getAlbum(p.albumId);
+    setTimeout(() => {
+      const albumId$ = this.routerFacade.params$.subscribe(p => {
+        if (!p.albumId) return;
+        this.albumsFacade.getAlbum(p.albumId);
+      });
+
+      const albumDetails$ = this.albumsFacade.albumDetails$.subscribe(
+        a => (this.albumDetails = a),
+      );
+
+      this.subscribers.push(albumId$, albumDetails$);
     });
-
-    const albumDetails$ = this.albumFacade.albumDetails$.subscribe(
-      a => (this.albumDetails = a),
-    );
-
-    this.subscribers.push(albumId$, albumDetails$);
   }
 
   public ngOnDestroy(): void {
     this.unsubscribeFromAll();
-    this.albumFacade.destroyCleanup();
+    this.albumsFacade.destroyCleanup();
   }
 
   public gotoArtist(id: string): void {

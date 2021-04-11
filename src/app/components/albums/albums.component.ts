@@ -1,24 +1,54 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
-import {UserFacade} from 'src/app/core-data/user/user.facade';
+import {RouterFacade} from 'src/app/core-data/router/router.facade';
+import {AutoUnsubscribeAdapter} from '../shared/adapters/auto-unsubscribe.adapter';
 
 @Component({
   selector: 'albums',
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.scss'],
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent extends AutoUnsubscribeAdapter implements OnInit {
   constructor(
     public albumsFacade: AlbumsFacade,
-    private userFacade: UserFacade,
+    private routerFacade: RouterFacade,
     private router: Router,
-  ) {}
+  ) {
+    super();
+  }
+
+  public _albumFilter?: neosonic.getAlbumTypes;
+
+  public get albumFilter(): string {
+    switch (this._albumFilter) {
+      case 'newest':
+        return 'Recently Added';
+      case 'recent':
+        return 'Recently Played';
+      case 'starred':
+        return 'Starred';
+      case 'frequent':
+        return 'Most Played';
+      default:
+        return '';
+    }
+  }
 
   public ngOnInit(): void {
-    if (this.userFacade.loggedIn$.getValue()) {
-      this.albumsFacade.getAlbumList('newest', {size: 22});
-    }
+    setTimeout(() => {
+      const routerParams$ = this.routerFacade.params$.subscribe(params => {
+        this._albumFilter = params.query ? params.query : 'newest';
+
+        this.albumsFacade.getAlbumList(this._albumFilter, {size: 22});
+      });
+      this.subscribers.push(routerParams$);
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.unsubscribeFromAll();
+    this.albumsFacade.destroyCleanup();
   }
 
   public handleAlbumClick(event: airsonicEvents.AlbumClick): void {

@@ -41,7 +41,9 @@ export class AlbumEffects {
       mergeMap(({albumType, options}) =>
         this.albumService.getAlbumsList(albumType, options).pipe(
           map(res => {
-            const payload = res['subsonic-response'].albumList2[0];
+            const payload = res['subsonic-response'].albumList2[0] || {
+              album: [],
+            };
 
             const albums: neosonic.Album[] = payload.album.map(a => a.$);
 

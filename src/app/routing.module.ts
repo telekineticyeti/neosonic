@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate: [UserGuardService],
   },
   {
+    path: 'albums/:query',
+    component: AlbumsComponent,
+    canActivate: [UserGuardService],
+  },
+  {
     path: 'album/:albumId',
     component: AlbumViewerComponent,
     canActivate: [UserGuardService],
@@ -33,6 +38,10 @@ const routes: Routes = [
     path: 'search/:query',
     component: SearchComponent,
     canActivate: [UserGuardService],
+  },
+  {
+    path: '**',
+    redirectTo: 'albums',
   },
 ];
 

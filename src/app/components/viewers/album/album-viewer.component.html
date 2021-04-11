@@ -8,7 +8,7 @@
     [coverArt]="albumDetails.album.coverArt"
     size="1200"
   />
-  <p>{{ (albumFacade.albumDetails$ | async)['coverArt'] }}</p>
+  <p>{{ (albumsFacade.albumDetails$ | async)['coverArt'] }}</p>
 </div>
 
 <div class="page-view album-details" *ngIf="albumDetails">
