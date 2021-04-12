@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlbumsFacade} from 'src/app/core-data/albums/albums.facade';
 import {RouterFacade} from 'src/app/core-data/router/router.facade';
@@ -19,6 +19,9 @@ export class AlbumsComponent extends AutoUnsubscribeAdapter implements OnInit {
   }
 
   public _albumFilter?: neosonic.getAlbumTypes;
+  public albumsPerPage = 40;
+  public pagesLoaded = 1;
+  @ViewChild('content') public containerElementRef: ElementRef;
 
   public get albumFilter(): string {
     switch (this._albumFilter) {
@@ -40,7 +43,11 @@ export class AlbumsComponent extends AutoUnsubscribeAdapter implements OnInit {
       const routerParams$ = this.routerFacade.params$.subscribe(params => {
         this._albumFilter = params.query ? params.query : 'newest';
 
-        this.albumsFacade.getAlbumList(this._albumFilter, {size: 22});
+        this.albumsFacade.getAlbumList(this._albumFilter, {
+          size: this.albumsPerPage,
+        });
+
+        this.resetInfiniteScroll();
       });
       this.subscribers.push(routerParams$);
     });
@@ -57,5 +64,25 @@ export class AlbumsComponent extends AutoUnsubscribeAdapter implements OnInit {
 
   public handleArtistClick(event: airsonicEvents.ArtistClick): void {
     this.router.navigateByUrl(`/artist/${event.artist}`);
+  }
+
+  public onScroll(): void {
+    const offset = this.pagesLoaded * this.albumsPerPage;
+
+    this.albumsFacade.getAlbumList(
+      this._albumFilter,
+      {
+        size: this.albumsPerPage,
+        offset,
+      },
+      true,
+    );
+
+    this.pagesLoaded = this.pagesLoaded + 1;
+  }
+
+  public resetInfiniteScroll(): void {
+    this.pagesLoaded = 1;
+    this.containerElementRef.nativeElement.scroll({top: 0, left: 0});
   }
 }

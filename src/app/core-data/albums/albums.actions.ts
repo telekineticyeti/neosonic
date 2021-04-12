@@ -31,11 +31,12 @@ export const AlbumActions = {
     props<{
       albumType: neosonic.getAlbumTypes;
       options: neosonic.getAlbumOptions;
+      append: boolean;
     }>(),
   ),
   getListSuccess: createAction(
     actions.GET_LIST_SUCCESS,
-    props<{albums: neosonic.Album[]}>(),
+    props<{albums: neosonic.Album[]; append?: boolean}>(),
   ),
   getListFail: createAction(actions.GET_LIST_FAIL, props<Error>()),
 

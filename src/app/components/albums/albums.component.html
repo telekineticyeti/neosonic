@@ -1,4 +1,12 @@
-<div class="page-view">
+<div
+  class="page-view"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  (scrolled)="onScroll()"
+  #content
+>
   <h1 class="page-header">
     <span *ngIf="_albumFilter">{{ albumFilter }}</span> Albums
   </h1>

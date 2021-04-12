@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './modules/material.module';
 import {RoutingModule} from './routing.module';
 import {CoreDataModule} from './core-data/core-data.module';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 import {AppComponent} from './app.component';
 import {SearchComponent} from './components/search/search.component';
@@ -68,6 +69,7 @@ import {UserGuardService} from './services/guards/user-guard.service';
     HttpClientModule,
     MaterialModule,
     CoreDataModule,
+    InfiniteScrollModule,
   ],
   bootstrap: [AppComponent],
   providers: [UtilityService, DialogService, UserGuardService],

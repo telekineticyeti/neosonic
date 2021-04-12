@@ -19,8 +19,8 @@ const initialState: IAlbumsState = adapter.getInitialState({
 
 const reducer = createReducer(
   initialState,
-  on(AlbumActions.getListSuccess, (state, {albums}) =>
-    adapter.setAll(albums, state),
+  on(AlbumActions.getListSuccess, (state, {albums, append}) =>
+    append ? adapter.upsertMany(albums, state) : adapter.setAll(albums, state),
   ),
   on(AlbumActions.deleteAll, state => adapter.removeAll(state)),
   on(AlbumActions.updateOne, (state, {update}) =>

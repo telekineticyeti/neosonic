@@ -38,7 +38,7 @@ export class AlbumEffects {
   getAlbumList$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AlbumActions.getList),
-      mergeMap(({albumType, options}) =>
+      mergeMap(({albumType, options, append}) =>
         this.albumService.getAlbumsList(albumType, options).pipe(
           map(res => {
             const payload = res['subsonic-response'].albumList2[0] || {
@@ -46,8 +46,7 @@ export class AlbumEffects {
             };
 
             const albums: neosonic.Album[] = payload.album.map(a => a.$);
-
-            return AlbumActions.getListSuccess({albums});
+            return AlbumActions.getListSuccess({albums, append});
           }),
           catchError((error: Error) => [AlbumActions.getListFail(error)]),
         ),

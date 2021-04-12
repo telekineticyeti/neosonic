@@ -1,5 +1,15 @@
 @import '~src/styles/variables';
 
+:host {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+.page-view {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .list-albums {
   mat-list-item {
     @extend %mat-list-item;

@@ -20,8 +20,9 @@ export class AlbumsFacade {
   public getAlbumList(
     albumType: neosonic.getAlbumTypes,
     options?: neosonic.getAlbumOptions,
+    append: boolean = false,
   ): void {
-    this.store.dispatch(AlbumActions.getList({albumType, options}));
+    this.store.dispatch(AlbumActions.getList({albumType, options, append}));
   }
 
   public getAlbum(id: string): void {
