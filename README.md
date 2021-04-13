@@ -2,6 +2,12 @@
 
 A playlist-first organization tool that provides a clean, functional UI for maintaining playlists on music servers that support the [subsonic API](http://www.subsonic.org/), such as Airsonic, Subsonic and Funkwhale.
 
+## Try it
+
+You can use a compiled version of [NeoSonic on Github.io](https://telekineticyeti.github.io/neosonic/). Simply log in to your hosted Subsonic-API-compatible server using the login dialog.
+
+Please note that your credentials are saved in your browser using [localstorage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Credentials are not stored by any other means.
+
 ## Why this tool was made
 
 Playlist management in Airsonic, Subsonic & Funkwhale is cumbersome. Adding or removing tracks to existing playlists is clunky and more time consuming than it should be.
@@ -27,7 +33,7 @@ NeoSonic currently does not support multi-user setups, and is intended for use o
 
 NeoSonic is written in Angular, NgRx and Angular Material. It has been developed using an Airsonic server as the API target, however it should work with any server that supports the Subsonic API.
 
-NeoSonic is still under development but offers the basic functionality stated above. Here is a running list of features that have been/will be implemented.
+NeoSonic is still under development but offers the basic functionality stated above. A list of features that have been/will be implemented is available on the [wiki](https://github.com/telekineticyeti/neosonic/wiki).
 
 ```sh
 # Install dependencies
@@ -42,38 +48,3 @@ npm run build
 # Compile production build for hosting on github pages
 npm run deploy
 ```
-
-## Tasks
-
-### Done
-
-- [x] Router state + serializer
-- [x] Material Icons
-- [x] CDK Drag & Drop
-- [x] Multiselect Songs
-- [x] Album Viewer
-- [x] Album Viewer - Song Drag & Drop
-- [x] Playlist Details
-- [x] Playlist Creation
-- [x] Playlist Deletion
-- [x] Playlist Editing
-- [x] Playlist removal to trigger reload of songs
-- [x] Artist Viewer
-- [x] Search
-- [x] Move songclick logic to utility service to reduce code duplication
-- [x] Server login & persistance
-
-### TODO
-
-- [ ] Toaster feedbacks
-- [ ] Album Browser by Type
-- [ ] Album Browser Infinite Scroll
-- [ ] Album Drag & Drop to Playlist
-- [ ] Drag & Drop preview improvements
-- [ ] Album Viewer - More by this artist
-- [ ] Context menus for playlist/songs
-- [ ] Search typeahead
-- [ ] Search Icon / Clear Button
-- [ ] Recent Searches (from persist)
-- [ ] Load Spinner
-- [ ] Keyboard Shortcuts
